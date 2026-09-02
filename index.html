@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Dra. Ana Lídia Meloncini — Cirurgia Plástica</title>
+<meta name="description" content="Cirurgia plástica com beleza, naturalidade e harmonia. Mama, abdômen e lipoescultura em São Paulo. Agende sua consulta pelo WhatsApp." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+<style>
+  /* ============================================================
+     PALETA
+     Oficiais (manual da marca):  --cream  #F5F0E8   |  --taupe  #876B55
+     Apoio / contraste (tonais, derivadas do próprio universo da marca —
+     vistas na placa da recepção e no template de stories):
+       --espresso  texto e seções escuras   --gold  filetes / hover
+       --linen / --sand  alternância suave entre seções
+     ============================================================ */
+  :root{
+    --cream:#F5F0E8;
+    --taupe:#876B55;
+    --espresso:#3A2C20;
+    --linen:#ECE1D2;
+    --sand:#E3D3C0;
+    --gold:#B79571;
+    --ink:#2E2418;
+    --ink-soft:#6A5B4C;
+    --card:#FFFDFA;
+    --max:1220px;
+    --serif:"Playfair Display",Georgia,"Times New Roman",serif;
+    --sans:"Montserrat","Helvetica Neue",Arial,sans-serif;
+    --shadow:0 30px 70px -28px rgba(58,44,32,.38);
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--cream);color:var(--ink);
+    font-family:var(--sans);font-weight:400;font-size:16.5px;line-height:1.75;
+    -webkit-font-smoothing:antialiased;overflow-x:hidden;
+  }
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.12}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 32px}
+  section{position:relative;padding:120px 0}
+  .bg-linen{background:var(--linen)}
+  .bg-espresso{background:var(--espresso);color:#EFE3D4}
+
+  .eyebrow{
+    font-weight:500;font-size:.72rem;letter-spacing:.32em;text-transform:uppercase;
+    color:var(--taupe);display:block;margin-bottom:16px;
+  }
+  .section-head{text-align:center;max-width:640px;margin:0 auto 78px}
+  .section-head h2{font-size:clamp(2.1rem,4.4vw,3.2rem);color:var(--taupe)}
+  .section-head.left{text-align:left;margin-left:0}
+
+  /* ---------- Botões ---------- */
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;cursor:pointer;border:0;
+    font-family:var(--sans);font-weight:500;font-size:.86rem;letter-spacing:.14em;
+    text-transform:uppercase;padding:16px 32px;border-radius:40px;
+    transition:background .22s ease,color .22s ease,transform .22s ease,box-shadow .22s ease;
+  }
+  .btn-primary{background:var(--espresso);color:#F3E8DA}
+  .btn-primary:hover{background:#2A1F16;transform:translateY(-2px)}
+  .btn-primary:focus-visible{outline:3px solid var(--taupe);outline-offset:3px}
+  .btn-outline{background:transparent;color:var(--taupe);border:1px solid var(--gold);padding:15px 30px}
+  .btn-outline:hover{background:var(--taupe);color:#fff;border-color:var(--taupe)}
+  .btn-outline:focus-visible{outline:3px solid var(--espresso);outline-offset:3px}
+  .btn-light{background:var(--cream);color:var(--espresso)}
+  .btn-light:hover{background:#fff;transform:translateY(-2px)}
+
+  /* ---------- Header ---------- */
+  header{
+    position:sticky;top:0;z-index:120;
+    background:rgba(245,240,232,.9);backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(135,107,85,.18);
+  }
+  .header-inner{
+    max-width:var(--max);margin:0 auto;padding:16px 32px;
+    display:flex;align-items:center;justify-content:space-between;gap:24px;
+  }
+  .brand img{height:38px;width:auto}
+  .nav{display:flex;gap:38px;align-items:center}
+  .nav a{font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);padding:6px 0;position:relative}
+  .nav a::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:0;background:var(--gold);transition:width .25s ease}
+  .nav a:hover::after{width:100%}
+  .header-cta{padding:12px 24px;font-size:.72rem}
+  @media(max-width:920px){.nav{display:none}}
+
+  /* ---------- Hero ---------- */
+  .hero{padding:0;min-height:90vh;display:grid;grid-template-columns:1.02fr .98fr;align-items:stretch;position:relative;overflow:hidden}
+  .hero-text{display:flex;flex-direction:column;justify-content:center;padding:110px 6vw 110px 0;padding-left:max(32px,calc((100vw - var(--max))/2 + 32px));position:relative;z-index:2}
+  .hero-text h1{font-size:clamp(2.7rem,5.6vw,4.5rem);color:var(--ink);margin-bottom:22px}
+  .hero-text h1 em{font-style:italic;color:var(--taupe)}
+  .hero-text p{font-size:1.08rem;color:var(--ink-soft);max-width:40ch;margin-bottom:36px}
+  .hero-actions{display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+  .hero-cred{margin-top:30px;font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:var(--taupe)}
+  .hero-media{position:relative;overflow:hidden;min-height:60vh}
+  .hero-media img{position:absolute;inset:-8% -8% -8% -8%;width:116%;height:116%;object-fit:cover;will-change:transform}
+  .hero-media::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,var(--cream) 0%,rgba(245,240,232,.18) 34%,transparent 60%)}
+  .hero-monogram{position:absolute;right:-60px;bottom:-90px;width:420px;opacity:.06;z-index:1;pointer-events:none}
+  @media(max-width:900px){
+    .hero{grid-template-columns:1fr;min-height:auto}
+    .hero-text{padding:90px 32px 60px;order:2}
+    .hero-media{order:1;min-height:52vh}
+    .hero-media::after{background:linear-gradient(0deg,var(--cream) 0%,transparent 40%)}
+  }
+
+  /* ---------- Faixa credibilidade ---------- */
+  .cred{background:var(--sand);padding:38px 0}
+  .cred .wrap{display:flex;justify-content:center;gap:clamp(28px,6vw,80px);flex-wrap:wrap;text-align:center}
+  .cred .item{font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--espresso);max-width:22ch}
+  .cred .item b{display:block;font-family:var(--serif);font-weight:600;font-size:1.7rem;letter-spacing:.01em;text-transform:none;color:var(--taupe);margin-bottom:4px}
+
+  /* ---------- Sobre ---------- */
+  .about{display:grid;grid-template-columns:0.86fr 1.14fr;gap:clamp(36px,6vw,84px);align-items:center}
+  .about-figure{position:relative}
+  .about-figure img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:4px}
+  .about-figure::before{content:"";position:absolute;left:-22px;top:-22px;right:34px;bottom:34px;border:1px solid var(--gold);z-index:-1}
+  .about-body h2{font-size:clamp(2rem,4vw,2.9rem);color:var(--taupe);margin-bottom:22px}
+  .about-body p{color:var(--ink-soft);margin-bottom:18px;max-width:52ch}
+  .about-facts{display:grid;grid-template-columns:1fr 1fr;gap:26px 40px;margin-top:34px;border-top:1px solid rgba(135,107,85,.25);padding-top:30px}
+  .about-facts h3{font-family:var(--sans);font-weight:600;font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:var(--taupe);margin-bottom:6px}
+  .about-facts p{font-size:.94rem;margin:0}
+  @media(max-width:820px){.about{grid-template-columns:1fr;gap:48px}.about-figure::before{right:24px}}
+
+  /* ============================================================
+     PROCEDIMENTOS — CATEGORIAS  (referência: "Graus da Ginecomastia"
+     de ginecomastiatratamento.com.br — imagem lateral ~25%, fundo
+     neutro, cards deslocados, seta de navegação, botão sobreposto)
+     ============================================================ */
+  .cats{background:var(--linen);overflow:hidden}
+  .cats-side{
+    position:absolute;left:0;top:50%;transform:translateY(-50%);
+    width:24vw;max-width:340px;min-width:230px;aspect-ratio:3/4;z-index:1;
+  }
+  .cats-side img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.04) brightness(1.02);border-radius:0 6px 6px 0}
+  .cats-side::after{content:"";position:absolute;right:-26px;bottom:-26px;width:70%;height:70%;background:var(--sand);border-radius:6px;z-index:-1}
+  @media(max-width:1040px){.cats-side{display:none}}
+
+  .cats-inner{max-width:1060px;margin:0 auto;padding:0 32px;position:relative;z-index:2}
+  .cats-track{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:26px;align-items:start;
+  }
+  .cat-card{
+    background:var(--card);border-radius:16px;box-shadow:var(--shadow);
+    padding:44px 30px 78px;text-align:center;position:relative;
+    transition:transform .28s ease,box-shadow .28s ease;
+  }
+  .cat-card:nth-child(1){transform:translateY(26px)}
+  .cat-card:nth-child(2){transform:translateY(-8px)}
+  .cat-card:nth-child(3){transform:translateY(40px)}
+  .cat-card:hover{transform:translateY(-6px);box-shadow:0 40px 80px -26px rgba(58,44,32,.44)}
+  .cat-card .ico{width:88px;height:88px;margin:0 auto 22px;border-radius:50%;display:block}
+  .cat-card h3{font-family:var(--sans);font-weight:600;font-size:1.02rem;letter-spacing:.05em;text-transform:uppercase;color:var(--taupe);margin-bottom:14px}
+  .cat-card p{font-size:.9rem;color:var(--ink-soft);line-height:1.7}
+  .cat-card .btn{
+    position:absolute;left:50%;bottom:0;transform:translate(-50%,50%);
+    white-space:nowrap;padding:14px 30px;font-size:.72rem;box-shadow:var(--shadow);
+  }
+  .cats-nav{
+    position:absolute;top:44%;width:100%;left:0;display:flex;justify-content:space-between;
+    pointer-events:none;padding:0 -4px;
+  }
+  .cats-nav button{
+    pointer-events:auto;width:46px;height:46px;border-radius:50%;
+    background:var(--card);border:1px solid var(--gold);color:var(--taupe);
+    display:grid;place-items:center;cursor:pointer;transition:background .2s ease,color .2s ease;
+    box-shadow:0 14px 30px -12px rgba(58,44,32,.4);
+  }
+  .cats-nav button:hover{background:var(--taupe);color:#fff;border-color:var(--taupe)}
+  .cats-nav .prev{transform:translateX(-58%)}
+  .cats-nav .next{transform:translateX(58%)}
+  @media(max-width:860px){
+    .cats-inner{padding:0 20px}
+    .cats-track{grid-auto-flow:column;grid-auto-columns:78%;grid-template-columns:none;
+      overflow-x:auto;scroll-snap-type:x mandatory;gap:18px;padding-bottom:10px;-webkit-overflow-scrolling:touch}
+    .cat-card{scroll-snap-align:center}
+    .cat-card:nth-child(1),.cat-card:nth-child(2),.cat-card:nth-child(3){transform:none}
+    .cats-nav{display:none}
+  }
+
+  /* ============================================================
+     PROCEDIMENTOS — DETALHE  (referência: "Tratamentos para
+     Ginecomastia" — título à esquerda, imagem sangrando pela
+     borda com mais destaque, larguras não proporcionais,
+     intercalando lado a lado, degradê e parallax suaves)
+     ============================================================ */
+  .detail{padding:118px 0;overflow:hidden}
+  .detail + .detail{border-top:1px solid rgba(135,107,85,.16)}
+  .detail-grid{display:grid;align-items:center;gap:clamp(30px,5vw,72px)}
+  .detail.img-right .detail-grid{grid-template-columns:0.86fr 1.14fr}
+  .detail.img-left  .detail-grid{grid-template-columns:1.14fr 0.86fr}
+  .detail.img-left .detail-media{order:-1}
+  .detail-media{position:relative;height:clamp(360px,52vw,560px)}
+  .detail-media .frame{position:absolute;inset:0;overflow:hidden;border-radius:6px}
+  .detail.img-right .detail-media .frame{right:calc((100vw - var(--max))/-2 - 32px)}
+  .detail.img-left  .detail-media .frame{left:calc((100vw - var(--max))/-2 - 32px)}
+  .detail-media img{position:absolute;inset:-10%;width:120%;height:120%;object-fit:cover;filter:grayscale(.12) sepia(.05);will-change:transform}
+  .detail-media::before{content:"";position:absolute;z-index:2;pointer-events:none;inset:0}
+  .detail.img-left  .detail-media::before{background:linear-gradient(90deg,transparent 55%,rgba(245,240,232,.55))}
+  .detail.img-right .detail-media::before{background:linear-gradient(90deg,rgba(245,240,232,.55),transparent 45%)}
+  .detail-copy .eyebrow{color:var(--gold)}
+  .detail-copy h2{font-size:clamp(1.9rem,3.6vw,2.7rem);color:var(--taupe);margin-bottom:18px}
+  .detail-copy .lead{color:var(--ink-soft);margin-bottom:26px;max-width:46ch}
+  .mini{display:grid;gap:14px;margin-bottom:30px}
+  .mini-row{display:flex;gap:16px;align-items:flex-start;padding:16px 0;border-top:1px solid rgba(135,107,85,.22)}
+  .mini-row img{width:52px;height:52px;flex:none}
+  .mini-row h4{font-family:var(--sans);font-weight:600;font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;color:var(--taupe);margin-bottom:4px}
+  .mini-row p{font-size:.9rem;color:var(--ink-soft)}
+  @media(max-width:860px){
+    .detail.img-right .detail-grid,.detail.img-left .detail-grid{grid-template-columns:1fr}
+    .detail.img-left .detail-media{order:0}
+    .detail-media{height:56vw;min-height:300px}
+    .detail.img-right .detail-media .frame,.detail.img-left .detail-media .frame{left:-32px;right:-32px}
+  }
+
+  /* ---------- Galeria complementar (ref. Spasante) ---------- */
+  .gallery{background:var(--linen)}
+  .gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .g-item{
+    background:var(--card);border:1px solid rgba(135,107,85,.16);border-radius:14px;
+    padding:46px 30px;text-align:center;transition:transform .25s ease,box-shadow .25s ease;
+  }
+  .g-item:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+  .g-item img{width:96px;height:96px;margin:0 auto 20px}
+  .g-item h3{font-family:var(--sans);font-weight:600;font-size:.96rem;letter-spacing:.06em;text-transform:uppercase;color:var(--taupe);margin-bottom:8px}
+  .g-item p{font-size:.88rem;color:var(--ink-soft)}
+  @media(max-width:780px){.gallery-grid{grid-template-columns:1fr;max-width:380px;margin:0 auto}}
+
+  /* ---------- Localização ---------- */
+  .loc{padding:0;display:grid;grid-template-columns:1fr 1.1fr;align-items:stretch}
+  .loc-info{padding:clamp(60px,7vw,110px) clamp(32px,6vw,80px);background:var(--sand)}
+  .loc-info h2{font-size:clamp(2rem,4vw,2.9rem);color:var(--taupe);margin-bottom:20px}
+  .loc-info address{font-style:normal;color:var(--ink-soft);font-size:1.04rem;line-height:1.9;margin-bottom:30px}
+  .loc-map{min-height:440px}
+  .loc-map iframe{width:100%;height:100%;border:0;filter:grayscale(.4) sepia(.12)}
+  @media(max-width:860px){.loc{grid-template-columns:1fr}.loc-map{min-height:320px}}
+
+  /* ---------- Instagram ---------- */
+  .insta{text-align:center}
+  .insta h2{font-size:clamp(2rem,4vw,2.9rem);color:var(--taupe);margin-bottom:16px}
+  .insta p{color:var(--ink-soft);max-width:46ch;margin:0 auto 30px}
+  .insta-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:46px}
+  .insta-row div{aspect-ratio:1;border-radius:8px;background:linear-gradient(150deg,var(--sand),var(--taupe))}
+  @media(max-width:720px){.insta-row{grid-template-columns:repeat(2,1fr)}}
+
+  /* ---------- Footer ---------- */
+  footer{background:var(--espresso);color:#D9C9B6;padding:84px 0 40px}
+  .foot{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:44px;margin-bottom:52px}
+  .foot img.flogo{height:66px;width:auto;margin-bottom:18px}
+  .foot h4{font-family:var(--sans);font-weight:600;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+  .foot a,.foot p{display:block;font-size:.92rem;color:#C9B6A1;margin-bottom:9px}
+  .foot a:hover{color:#fff}
+  .foot-bottom{border-top:1px solid rgba(255,255,255,.12);padding-top:26px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:.76rem;color:#9A8874;letter-spacing:.06em}
+  @media(max-width:720px){.foot{grid-template-columns:1fr;gap:32px}}
+
+  /* ---------- WhatsApp sticky ---------- */
+  .wa{
+    position:fixed;right:22px;bottom:22px;z-index:200;display:inline-flex;align-items:center;gap:12px;
+    background:#3A2C20;color:#F3E8DA;font-weight:500;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;
+    padding:15px 22px;border-radius:44px;box-shadow:0 16px 40px rgba(46,36,24,.4);
+    transition:transform .38s cubic-bezier(.4,0,.2,1),background .2s ease,padding .3s ease;
+  }
+  .wa:hover{background:#241a12}
+  .wa:focus-visible{outline:3px solid #fff;outline-offset:3px}
+  .wa svg{width:20px;height:20px;flex:none}
+  .wa .label{white-space:nowrap;overflow:hidden;max-width:220px;transition:max-width .34s ease,opacity .24s ease}
+  .wa.tucked{transform:translateY(160%)}
+  .wa.compact{padding:15px}
+  .wa.compact .label{max-width:0;opacity:0}
+  @media(max-width:520px){.wa .label{display:none}.wa{padding:15px}}
+
+  /* ---------- Reveal ---------- */
+  .reveal{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease}
+  .reveal.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){
+    .reveal{opacity:1;transform:none;transition:none}
+    html{scroll-behavior:auto}
+  }
+</style>
+</head>
+<body id="topo">
+
+<header>
+  <div class="header-inner">
+    <a class="brand" href="#topo" aria-label="Dra. Ana Lídia Meloncini — Cirurgia Plástica">
+      <img src="assets/logo_wordmark_brown.png" alt="Ana Lídia Meloncini — Cirurgia Plástica" />
+    </a>
+    <nav class="nav">
+      <a href="#sobre">Sobre</a>
+      <a href="#procedimentos">Procedimentos</a>
+      <a href="#localizacao">Localização</a>
+      <a href="#instagram">Instagram</a>
+    </nav>
+    <a class="btn btn-primary header-cta" href="https://wa.me/5511945855039" target="_blank" rel="noopener">Agendar no WhatsApp</a>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-text">
+      <span class="eyebrow">Cirurgia Plástica · São Paulo</span>
+      <h1>Beleza, naturalidade<br>e <em>harmonia</em></h1>
+      <p>Alto padrão técnico com o acolhimento de quem entende exatamente o que você deseja transformar.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="https://wa.me/5511945855039" target="_blank" rel="noopener">Agendar consulta</a>
+        <a class="btn btn-outline" href="#procedimentos">Ver procedimentos</a>
+      </div>
+      <p class="hero-cred">CRM 94.951 &nbsp;·&nbsp; RQE 93868</p>
+    </div>
+    <div class="hero-media">
+      <img id="heroImg" src="assets/ambiente-recepcao.jpg" alt="Recepção da clínica da Dra. Ana Lídia Meloncini" />
+    </div>
+    <img class="hero-monogram" src="assets/logo_monogram_brown.png" alt="" aria-hidden="true" />
+  </section>
+
+  <!-- FAIXA DE CREDIBILIDADE -->
+  <div class="cred">
+    <div class="wrap">
+      <div class="item"><b>Especialista</b> Membro da Sociedade Brasileira de Cirurgia Plástica</div>
+      <div class="item"><b>Anos de atuação</b> dedicados a mama, abdômen e lipoescultura</div>
+      <div class="item"><b>CRM 94.951</b> RQE 93868</div>
+    </div>
+  </div>
+
+  <!-- SOBRE -->
+  <section id="sobre">
+    <div class="wrap">
+      <div class="about reveal">
+        <figure class="about-figure">
+          <img src="assets/brand-necessaire.jpg" alt="Detalhe do universo da marca da Dra. Ana Lídia" />
+        </figure>
+        <div class="about-body">
+          <span class="eyebrow">Sobre a doutora</span>
+          <h2>Dra. Ana Lídia Meloncini</h2>
+          <p>Cirurgiã plástica com foco em contorno corporal e cirurgia mamária. O trabalho parte de um princípio simples: resultado natural, proporcional ao corpo e fiel à identidade de cada paciente.</p>
+          <p>Atendimento direto e objetivo — você entende o procedimento, os cuidados e o que esperar antes de decidir.</p>
+          <div class="about-facts">
+            <div>
+              <h3>Formação</h3>
+              <p>Título de especialista em Cirurgia Plástica, com registro RQE 93868.</p>
+            </div>
+            <div>
+              <h3>Tempo de atuação</h3>
+              <p>Anos de prática cirúrgica concentrada nas categorias de destaque.</p>
+            </div>
+            <div>
+              <h3>Registro</h3>
+              <p>CRM 94.951 — Conselho Regional de Medicina do Estado de São Paulo.</p>
+            </div>
+            <div>
+              <h3>Abordagem</h3>
+              <p>Acolhimento, segurança e informação em cada etapa do processo.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCEDIMENTOS · CATEGORIAS (estilo "Graus da Ginecomastia") -->
+  <section id="procedimentos" class="cats">
+    <div class="cats-side" aria-hidden="true">
+      <img src="assets/ambiente-recepcao.jpg" alt="" />
+    </div>
+    <div class="cats-inner">
+      <div class="section-head reveal">
+        <span class="eyebrow">Procedimentos</span>
+        <h2>Categorias em destaque</h2>
+      </div>
+
+      <div class="cats-nav" aria-hidden="true">
+        <button class="prev" type="button" aria-label="Anterior">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button class="next" type="button" aria-label="Próximo">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+      </div>
+
+      <div class="cats-track reveal" id="catsTrack">
+        <article class="cat-card">
+          <img class="ico" src="assets/ico_mama.png" alt="Ícone da categoria Mama" />
+          <h3>Mama</h3>
+          <p>Aumento, redução, mastopexia e combinações. Volume e formato proporcionais ao corpo, com cicatrizes planejadas para ficarem discretas.</p>
+          <a class="btn btn-primary" href="https://wa.me/5511945855039?text=Tenho%20interesse%20em%20cirurgia%20de%20mama" target="_blank" rel="noopener">Saiba mais</a>
+        </article>
+        <article class="cat-card">
+          <img class="ico" src="assets/ico_abdomen.png" alt="Ícone da categoria Abdômen" />
+          <h3>Abdômen</h3>
+          <p>Abdominoplastia para correção de flacidez de pele e da musculatura, indicada especialmente após gestação ou grande perda de peso.</p>
+          <a class="btn btn-primary" href="https://wa.me/5511945855039?text=Tenho%20interesse%20em%20cirurgia%20de%20abd%C3%B4men" target="_blank" rel="noopener">Saiba mais</a>
+        </article>
+        <article class="cat-card">
+          <img class="ico" src="assets/ico_lipoescultura.png" alt="Ícone da categoria Lipoescultura" />
+          <h3>Lipoescultura</h3>
+          <p>Refinamento do contorno com remoção de gordura localizada e definição das curvas, sempre a partir da estrutura de cada paciente.</p>
+          <a class="btn btn-primary" href="https://wa.me/5511945855039?text=Tenho%20interesse%20em%20Lipoescultura" target="_blank" rel="noopener">Saiba mais</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCEDIMENTOS · DETALHE — bloco 1 (imagem à esquerda) -->
+  <section class="detail img-left">
+    <div class="wrap">
+      <div class="detail-grid">
+        <div class="detail-media reveal">
+          <div class="frame"><img src="assets/brand-folder.jpg" alt="Material de marca da Dra. Ana Lídia Meloncini" /></div>
+        </div>
+        <div class="detail-copy reveal">
+          <span class="eyebrow">Contorno corporal</span>
+          <h2>Lipoescultura & Abdominoplastia</h2>
+          <p class="lead">Os dois procedimentos que mais transformam a silhueta — muitas vezes combinados em um mesmo planejamento cirúrgico.</p>
+          <div class="mini">
+            <div class="mini-row">
+              <img src="assets/ico_lipoescultura.png" alt="Ícone Lipoescultura" />
+              <div>
+                <h4>Lipoescultura</h4>
+                <p>Aspiração de gordura localizada e escultura das curvas, com atenção à proporção entre cintura, quadril e dorso.</p>
+              </div>
+            </div>
+            <div class="mini-row">
+              <img src="assets/ico_abdomen.png" alt="Ícone Abdômen" />
+              <div>
+                <h4>Abdominoplastia</h4>
+                <p>Remoção do excesso de pele e reforço da parede abdominal para um abdômen mais firme e alinhado.</p>
+              </div>
+            </div>
+          </div>
+          <a class="btn btn-primary" href="https://wa.me/5511945855039?text=Quero%20saber%20sobre%20contorno%20corporal" target="_blank" rel="noopener">Falar sobre contorno corporal</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCEDIMENTOS · DETALHE — bloco 2 (imagem à direita, com mais destaque) -->
+  <section class="detail img-right">
+    <div class="wrap">
+      <div class="detail-grid">
+        <div class="detail-copy reveal">
+          <span class="eyebrow">Mama</span>
+          <h2>Cirurgia mamária</h2>
+          <p class="lead">Cada mama é planejada individualmente. O objetivo é um resultado que acompanha o corpo e envelhece bem.</p>
+          <div class="mini">
+            <div class="mini-row">
+              <img src="assets/ico_mama.png" alt="Ícone Mama" />
+              <div>
+                <h4>Aumento &amp; mastopexia</h4>
+                <p>Prótese, elevação ou os dois combinados, conforme volume desejado e o grau de flacidez.</p>
+              </div>
+            </div>
+            <div class="mini-row">
+              <img src="assets/ico_mama.png" alt="Ícone Mama" />
+              <div>
+                <h4>Redução mamária</h4>
+                <p>Alívio de peso e desconforto com remodelagem para uma mama proporcional e bem posicionada.</p>
+              </div>
+            </div>
+          </div>
+          <a class="btn btn-primary" href="https://wa.me/5511945855039?text=Quero%20saber%20sobre%20cirurgia%20m%C3%A1maria" target="_blank" rel="noopener">Falar sobre cirurgia mamária</a>
+        </div>
+        <div class="detail-media reveal">
+          <div class="frame"><img src="assets/brand-necessaire.jpg" alt="Detalhe do universo da marca da Dra. Ana Lídia" /></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERIA COMPLEMENTAR -->
+  <section class="gallery">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Também atendo</span>
+        <h2>Outras categorias</h2>
+      </div>
+      <div class="gallery-grid reveal">
+        <div class="g-item">
+          <img src="assets/ico_face.png" alt="Ícone da categoria Face" />
+          <h3>Face</h3>
+          <p>Procedimentos de rejuvenescimento e harmonização facial.</p>
+        </div>
+        <div class="g-item">
+          <img src="assets/ico_estetica.png" alt="Ícone da categoria Estética" />
+          <h3>Estética</h3>
+          <p>Tratamentos estéticos que complementam o resultado cirúrgico.</p>
+        </div>
+        <div class="g-item">
+          <img src="assets/ico_tecnologias.png" alt="Ícone da categoria Tecnologias" />
+          <h3>Tecnologias</h3>
+          <p>Recursos que apoiam a recuperação e a qualidade do resultado.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCALIZAÇÃO -->
+  <section id="localizacao" class="loc">
+    <div class="loc-info reveal">
+      <span class="eyebrow">Localização</span>
+      <h2>Jardim Paulista</h2>
+      <address>
+        Rua Guarará, 529 — Conjunto 61<br>
+        Jardim Paulista, São Paulo — SP
+      </address>
+      <a class="btn btn-primary" href="https://www.google.com/maps/search/?api=1&query=Rua+Guarar%C3%A1+529+Jardim+Paulista+S%C3%A3o+Paulo" target="_blank" rel="noopener">Como chegar</a>
+    </div>
+    <div class="loc-map">
+      <iframe title="Mapa — Rua Guarará, 529, Jardim Paulista" loading="lazy" src="https://www.google.com/maps?q=Rua%20Guarar%C3%A1%20529%20Jardim%20Paulista%20S%C3%A3o%20Paulo&output=embed"></iframe>
+    </div>
+  </section>
+
+  <!-- INSTAGRAM -->
+  <section id="instagram" class="bg-linen insta">
+    <div class="wrap">
+      <div class="reveal">
+        <span class="eyebrow">Redes sociais</span>
+        <h2>Acompanhe no Instagram</h2>
+        <p>Orientações sobre procedimentos, bastidores e cuidados. Siga <strong>@analidiameloncini</strong>.</p>
+        <a class="btn btn-primary" href="https://instagram.com/analidiameloncini" target="_blank" rel="noopener">Seguir @analidiameloncini</a>
+      </div>
+      <div class="insta-row reveal"><div></div><div></div><div></div><div></div></div>
+    </div>
+  </section>
+
+  <!-- FOOTER / CONTATO -->
+  <footer>
+    <div class="wrap">
+      <div class="foot">
+        <div>
+          <img class="flogo" src="assets/logo_lockup_cream.png" alt="Ana Lídia Meloncini — Cirurgia Plástica" />
+          <p>Beleza, naturalidade e harmonia.<br>CRM 94.951 · RQE 93868</p>
+        </div>
+        <div>
+          <h4>Contato</h4>
+          <a href="https://wa.me/5511945855039" target="_blank" rel="noopener">WhatsApp (11) 94585-5039</a>
+          <a href="https://instagram.com/analidiameloncini" target="_blank" rel="noopener">Instagram @analidiameloncini</a>
+        </div>
+        <div>
+          <h4>Endereço</h4>
+          <p>Rua Guarará, 529 — Conj. 61<br>Jardim Paulista, São Paulo — SP</p>
+          <a class="btn btn-light" style="margin-top:8px" href="https://wa.me/5511945855039" target="_blank" rel="noopener">Agendar consulta</a>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <span>© <span id="yr"></span> Dra. Ana Lídia Meloncini · Cirurgia Plástica</span>
+        <span>Responsável técnica: Dra. Ana Lídia Meloncini — CRM 94.951</span>
+      </div>
+    </div>
+  </footer>
+
+</main>
+
+<a class="wa" id="wa" href="https://wa.me/5511945855039" target="_blank" rel="noopener" aria-label="Agendar consulta pelo WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 00-8.6 15L2 22l5.2-1.4A10 10 0 1012 2zm5.8 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.2.1-1.9-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5-4.5-.2-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.2-.3.5-.4.7-.4h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.3.3c-.2.2-.3.4-.2.7.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.7-.1l.8-1c.2-.2.4-.2.6-.1l2 .9c.3.2.5.3.5.4.1.2.1.7-.1 1.2z"/></svg>
+  <span class="label">Agendar no WhatsApp</span>
+</a>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Reveal
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+  // Parallax — hero + detail images
+  var pxEls = [];
+  if(!reduce){
+    var hero = document.getElementById('heroImg');
+    if(hero) pxEls.push({el:hero, k:0.06});
+    document.querySelectorAll('.detail-media img').forEach(function(img){ pxEls.push({el:img, k:0.05}); });
+    window.addEventListener('scroll', function(){
+      var vh = window.innerHeight;
+      pxEls.forEach(function(p){
+        var r = p.el.getBoundingClientRect();
+        if(r.bottom > 0 && r.top < vh){
+          var offset = (r.top + r.height/2 - vh/2) * -p.k;
+          p.el.style.transform = 'translateY(' + offset.toFixed(1) + 'px)';
+        }
+      });
+    }, {passive:true});
+  }
+
+  // Carrossel de categorias
+  var track = document.getElementById('catsTrack');
+  document.querySelectorAll('.cats-nav button').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var card = track.querySelector('.cat-card');
+      var step = card ? card.offsetWidth + 24 : 320;
+      track.scrollBy({ left: btn.classList.contains('next') ? step : -step, behavior:'smooth' });
+    });
+  });
+
+  // WhatsApp sticky — recolhe ao descer rápido, compacta ao subir
+  var wa = document.getElementById('wa'), lastY = window.scrollY;
+  window.addEventListener('scroll', function(){
+    var y = window.scrollY, down = y > lastY;
+    if(y > 460 && down){ wa.classList.add('tucked'); wa.classList.remove('compact'); }
+    else if(y > 460){ wa.classList.remove('tucked'); wa.classList.add('compact'); }
+    else { wa.classList.remove('tucked','compact'); }
+    lastY = y;
+  }, {passive:true});
+</script>
+
+</body>
+</html>
