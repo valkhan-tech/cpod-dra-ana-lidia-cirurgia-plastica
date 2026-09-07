@@ -92,7 +92,9 @@
   .nav a:hover::after{width:100%}
   .header-cta{padding:12px 24px;font-size:.72rem}
   @media(max-width:920px){
+    .header-inner{justify-content:center}
     .nav{display:none}
+    .header-cta{display:none}
     .brand .desktop-logo{display:none}
     .brand .mobile-logo{display:block}
   }
@@ -125,6 +127,25 @@
   .cred .item b{display:block;font-family:var(--serif);font-weight:600;font-size:1.7rem;letter-spacing:.01em;text-transform:none;color:var(--taupe);margin-bottom:4px}
 
   /* ---------- Sobre ---------- */
+  #sobre{overflow:hidden}
+  #sobre::after{
+    content:"";
+    position:absolute;
+    /* right: .25rem; */
+    bottom:-16rem;
+    width:100vw;
+    aspect-ratio:3 / 1;
+    /* background-color:var(--espresso); */
+    background-image:url(assets/logo_wordmark_brown.png);
+    background-position:center;
+    background-repeat:no-repeat;
+    background-size:78% auto;
+    /* border-radius:.5rem 2rem; */
+    opacity:0.25;
+    pointer-events:none;
+    z-index:0;
+  }
+  #sobre > .wrap{position:relative;z-index:1}
   .about{display:grid;grid-template-columns:0.86fr 1.14fr;gap:clamp(36px,6vw,84px);align-items:center}
   .about-figure{position:relative}
   .about-figure img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:.5rem 4rem}
@@ -231,7 +252,9 @@
 
   /* ---------- Localização ---------- */
   .loc{padding:0;display:grid;grid-template-columns:1fr 1.1fr;align-items:stretch}
-  .loc-info{padding:clamp(60px,7vw,110px) clamp(32px,6vw,80px);background:var(--sand)}
+  .loc-info{padding:clamp(60px,7vw,110px) clamp(32px,6vw,80px);background:var(--sand);position:relative;overflow:hidden;isolation:isolate}
+  .loc-info::after{content:"";position:absolute;right: 0.25rem;bottom:0.25rem;width:clamp(150px,18vw,250px);aspect-ratio:1;background:url("assets/logo_monogram_brown.png") center/contain no-repeat;opacity:.25;pointer-events:none;z-index:-1}
+  .loc-info > *{position:relative;z-index:1}
   .loc-info h2{font-size:clamp(2rem,4vw,2.9rem);color:var(--taupe);margin-bottom:20px}
   .loc-info address{font-style:normal;color:var(--ink-soft);font-size:1.04rem;line-height:1.9;margin-bottom:30px}
   .loc-map{min-height:440px}
