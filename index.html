@@ -341,6 +341,53 @@
   .insta-row div{aspect-ratio:1;border-radius:8px;background:linear-gradient(150deg,var(--sand),var(--taupe))}
   @media(max-width:720px){.insta-row{grid-template-columns:repeat(2,1fr)}}
 
+  /* ---------- Equipe ---------- */
+  .team{background:var(--cream);overflow:hidden}
+  .team-head{display:flex;align-items:end;justify-content:space-between;gap:28px;margin-bottom:16px}
+  .team-head .section-head{max-width:none;margin:0;text-align:left}
+  .team-head .section-head h2{width:100%;max-width:none;white-space:nowrap;font-size:clamp(1.65rem,2.8vw,2.35rem)}
+  .team-head .eyebrow{white-space:nowrap;font-size:.68rem}
+  .team-controls{position:absolute;z-index:4;top:50%;left:-32px;right:-32px;display:flex;justify-content:space-between;gap:10px;transform:translateY(-50%);pointer-events:none}
+  .team-control{width:48px;height:48px;border:1px solid var(--gold);border-radius:50%;background:transparent;color:var(--taupe);display:grid;place-items:center;cursor:pointer;transition:background .22s ease,color .22s ease,transform .22s ease}
+  .team-control{pointer-events:auto}
+  .team-control:hover:not(:disabled){background:var(--taupe);color:#fff;transform:translateY(-2px)}
+  .team-control:focus-visible{outline:3px solid var(--espresso);outline-offset:3px}
+  .team-control:disabled{opacity:.35;cursor:not-allowed}
+  .team-control svg{width:18px;height:18px}
+  .team-viewport{position:relative;overflow:visible;max-height:65vh;margin:0 -32px;padding:0 32px}
+  .team-track-window{overflow:hidden}
+  .team-track{display:flex;gap:0;transition:transform .55s cubic-bezier(.22,.61,.36,1);will-change:transform}
+  .team-card{height:min(65vh,520px);min-width:100%;display:grid;grid-template-columns:minmax(280px,.9fr) minmax(0,1.1fr);background:var(--card);border:1px solid rgba(135,107,85,.18);box-shadow:var(--shadow);border-radius:8px;overflow:hidden}
+  .team-photo{min-height:0;background:var(--linen);position:relative;overflow:hidden}
+  .team-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 60%,rgba(245,240,232,.22))}
+  .team-photo img{width:100%;height:100%;object-fit:cover;object-position:center;filter:sepia(.05)}
+  .team-card.is-placeholder .team-photo{display:grid;place-items:center;padding:34px}
+  .team-card.is-placeholder .team-photo::before{content:"Equipe Essentia\A Saúde";white-space:pre;text-align:center;font-family:var(--serif);font-size:clamp(2rem,4vw,3rem);line-height:1.1;color:var(--taupe);opacity:.7}
+  .team-copy{padding:30px clamp(30px,4vw,48px);display:flex;flex-direction:column;justify-content:center;overflow:visible}
+  .team-copy h3{font-size:clamp(1.7rem,3vw,2.45rem);color:var(--taupe);margin-bottom:7px}
+  .team-role{font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:14px}
+  .team-copy p{font-size:.82rem;line-height:1.55;color:var(--ink-soft);max-width:46ch;margin-bottom:14px}
+  .team-meta{border-top:1px solid rgba(135,107,85,.22);padding-top:14px;margin-bottom:18px;color:var(--ink-soft);font-size:.76rem}
+  .team-links{display:flex;flex-wrap:wrap;gap:12px}
+  .team-links .btn{font-size:.62rem;padding:11px 17px}
+  .team-dots{display:flex;justify-content:center;gap:9px;margin-top:28px}
+  .team-dot{width:8px;height:8px;padding:0;border:0;border-radius:50%;background:var(--sand);cursor:pointer;transition:transform .2s ease,background .2s ease}
+  .team-dot.active{background:var(--taupe);transform:scale(1.35)}
+  .team-dot:focus-visible{outline:3px solid var(--espresso);outline-offset:3px}
+  @media(max-width:720px){
+    .team-head{align-items:start;flex-direction:column;margin-bottom:36px}
+    .team-head .section-head h2{font-size:1.02rem}
+    .team-viewport{margin:0 -20px;padding:0 20px}
+    .team-controls{top:50%;left:0;right:0;justify-content:space-between;transform:translateY(-50%);padding:0 0 0 8px}
+    .team-viewport{max-height:82vh}
+    .team-card{height:min(82vh,760px);grid-template-columns:1fr;grid-template-rows:38% 62%}
+    .team-photo{height:auto;min-height:0;max-height:none}
+    .team-copy{padding:28px 26px 34px}
+    .team-copy h3{font-size:1.8rem}
+    .team-copy p{font-size:.86rem;line-height:1.6;margin-bottom:16px}
+  }
+  @media(prefers-reduced-motion:reduce){.team-track{transition:none}}
+
   /* ---------- Footer ---------- */
   footer{background:var(--espresso);color:#D9C9B6;padding:84px 0 40px}
   .foot{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:44px;margin-bottom:52px}
@@ -389,6 +436,7 @@
       <a href="#procedimentos">Procedimentos</a>
       <a href="#localizacao">Localização</a>
       <a href="#instagram">Instagram</a>
+      <a href="#equipe">Equipe</a>
     </nav>
     <a class="btn btn-primary header-cta" href="https://wa.me/5511945855039" target="_blank" rel="noopener">Agendar no WhatsApp</a>
   </div>
@@ -550,7 +598,7 @@
           <a class="btn btn-primary" href="https://wa.me/5511945855039?text=Quero%20saber%20sobre%20contorno%20corporal" target="_blank" rel="noopener">Falar sobre contorno corporal</a>
         </div>
         <div class="detail-media reveal">
-          <div class="frame"><img src="assets/photo-1777900201261-bed34749d294.avif" alt="Imagem de referência para contorno corporal" /></div>
+          <div class="frame"><img src="assets/00001-2005544757.png" alt="Imagem de referência para contorno corporal" /></div>
         </div>
       </div>
     </div>
@@ -608,7 +656,68 @@
         <p>Orientações sobre procedimentos, bastidores e cuidados. Siga <strong>@analidiameloncini</strong>.</p>
         <a class="btn btn-primary" href="https://instagram.com/analidiameloncini" target="_blank" rel="noopener">Seguir @analidiameloncini</a>
       </div>
-      <div class="insta-row reveal"><div></div><div></div><div></div><div></div></div>
+      <!-- <div class="insta-row reveal"><div></div><div></div><div></div><div></div></div> -->
+    </div>
+  </section>
+
+  <!-- EQUIPE -->
+  <section id="equipe" class="team">
+    <div class="wrap">
+      <div class="team-head reveal">
+        <div class="section-head">
+          <span class="eyebrow">Equipe multidisciplinar - cuidamos de cada detalhe</span>
+        </div>
+      </div>
+
+      <div class="team-viewport reveal" aria-live="polite">
+        <div class="team-controls" aria-label="Controles do carrossel da equipe">
+          <button class="team-control" id="teamPrev" type="button" aria-label="Profissional anterior">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m15 18-6-6 6-6" /></svg>
+          </button>
+          <button class="team-control" id="teamNext" type="button" aria-label="Próxima profissional">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>
+          </button>
+        </div>
+        <div class="team-track-window">
+          <div class="team-track" id="teamTrack">
+          <article class="team-card">
+            <div class="team-photo"><img src="https://priscilanasser.com.br/assets/dra-priscila-nasser-3.jpg" alt="Dra. Priscila Nasser em seu consultório de cardiologia" /></div>
+            <div class="team-copy">
+              <span class="eyebrow">Cardiologia</span>
+              <h3>Dra. Priscila Nasser</h3>
+              <p class="team-role">Cardiologista</p>
+              <p>Cardiologia humanizada, baseada em evidências científicas, com escuta atenta e acompanhamento próximo em todas as fases da vida.</p>
+              <p class="team-meta">CRM 125996-SP · RQE 99010</p>
+              <div class="team-links">
+                <a class="btn btn-primary" href="https://priscilanasser.com.br" target="_blank" rel="noopener">Conheça o site</a>
+                <a class="btn btn-outline" href="https://instagram.com/dra_priscila_nasser" target="_blank" rel="noopener">Instagram</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="team-card is-placeholder">
+            <div class="team-photo" aria-hidden="true"></div>
+            <div class="team-copy">
+              <span class="eyebrow">Em breve</span>
+              <h3>Mais uma especialista</h3>
+              <p class="team-role">Perfil em atualização</p>
+              <p>Em breve, você poderá conhecer outra profissional que faz parte da rede de cuidado da clínica.</p>
+            </div>
+          </article>
+
+          <article class="team-card is-placeholder">
+            <div class="team-photo" aria-hidden="true"></div>
+            <div class="team-copy">
+              <span class="eyebrow">Em breve</span>
+              <h3>Mais um especialista</h3>
+              <p class="team-role">Perfil em atualização</p>
+              <p>Estamos preparando este perfil para apresentar todos os profissionais que acompanham nossas pacientes.</p>
+            </div>
+          </article>
+          </div>
+        </div>
+      </div>
+      <div class="team-dots" id="teamDots" aria-label="Selecionar profissional"></div>
     </div>
   </section>
 
@@ -655,6 +764,39 @@
     es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
   },{threshold:.12});
   document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+  // Carrossel da equipe
+  var teamTrack = document.getElementById('teamTrack');
+  var teamDots = document.getElementById('teamDots');
+  var teamPrev = document.getElementById('teamPrev');
+  var teamNext = document.getElementById('teamNext');
+  var teamIndex = 0;
+  var teamCount = teamTrack ? teamTrack.children.length : 0;
+  if(teamTrack && teamDots){
+    for(var dotIndex = 0; dotIndex < teamCount; dotIndex++){
+      var dot = document.createElement('button');
+      dot.className = 'team-dot';
+      dot.type = 'button';
+      dot.setAttribute('aria-label', 'Ver profissional ' + (dotIndex + 1));
+      dot.addEventListener('click', function(){ teamGoTo(Number(this.dataset.index)); });
+      dot.dataset.index = dotIndex;
+      teamDots.appendChild(dot);
+    }
+    function teamGoTo(index){
+      teamIndex = Math.max(0, Math.min(index, teamCount - 1));
+      var slideWidth = teamTrack.parentElement.getBoundingClientRect().width;
+      teamTrack.style.transform = 'translateX(-' + (teamIndex * slideWidth) + 'px)';
+      Array.prototype.forEach.call(teamDots.children, function(dot, dotPosition){
+        dot.classList.toggle('active', dotPosition === teamIndex);
+        dot.setAttribute('aria-current', dotPosition === teamIndex ? 'true' : 'false');
+      });
+      teamPrev.disabled = teamIndex === 0;
+      teamNext.disabled = teamIndex === teamCount - 1;
+    }
+    teamPrev.addEventListener('click', function(){ teamGoTo(teamIndex - 1); });
+    teamNext.addEventListener('click', function(){ teamGoTo(teamIndex + 1); });
+    teamGoTo(0);
+  }
 
   // Parallax — hero + detail images
   var pxEls = [];
