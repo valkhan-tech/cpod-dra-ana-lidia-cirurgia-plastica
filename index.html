@@ -181,6 +181,8 @@
   .hero-text p{font-size:1.08rem;color:var(--ink-soft);max-width:40ch;margin-bottom:36px}
   .hero-actions{display:flex;gap:16px;flex-wrap:wrap;align-items:center}
   .hero-cred{margin-top:30px;font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:var(--taupe)}
+  .hero-text .hero-cred{font-size:.72rem;line-height:1.5;margin-bottom:0}
+  .hero-cred .cred-line{display:inline}
   .hero-media{position:relative;overflow:hidden;min-height:60vh}
   .hero-media img{position:absolute;inset:-8% -8% -8% -8%;width:116%;height:116%;object-fit:cover;will-change:transform}
   .hero-media::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,var(--cream) 0%,rgba(245,240,232,.18) 34%,transparent 60%)}
@@ -228,7 +230,7 @@
   .about-facts{display:grid;grid-template-columns:1fr 1fr;gap:26px 40px;margin-top:34px;border-top:1px solid rgba(135,107,85,.25);padding-top:30px}
   .about-facts h3{font-family:var(--sans);font-weight:600;font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:var(--taupe);margin-bottom:6px}
   .about-facts p{font-size:.94rem;margin:0}
-  @media(max-width:820px){.about{grid-template-columns:1fr;gap:48px}.about-figure::before{right:24px}.about-body h2{white-space:normal}}
+  @media(max-width:820px){.about{grid-template-columns:1fr;gap:48px}.about-figure::before{right:24px}.about-body h2{white-space:normal}.about-facts{grid-template-columns:1fr;gap:20px 0}}
 
   /* ============================================================
      PROCEDIMENTOS — CATEGORIAS  (referência: "Graus da Ginecomastia"
@@ -251,12 +253,11 @@
   .cat-card{
     background:var(--card);border-radius:16px;box-shadow:var(--shadow);
     padding:44px 30px 78px;text-align:center;position:relative;
-    transition:transform .28s ease,box-shadow .28s ease;
+    transition:none;
   }
   .cat-card:nth-child(1){transform:translateY(26px)}
   .cat-card:nth-child(2){transform:translateY(-8px)}
   .cat-card:nth-child(3){transform:translateY(40px)}
-  .cat-card:hover{transform:translateY(-6px);box-shadow:0 40px 80px -26px rgba(58,44,32,.44)}
   .cat-card .ico{width:88px;height:88px;margin:0 auto 22px;border-radius:50%;display:block}
   .cat-card h3{font-family:var(--sans);font-weight:600;font-size:1.02rem;letter-spacing:.05em;text-transform:uppercase;color:var(--taupe);margin-bottom:14px}
   .cat-card p{font-size:.9rem;color:var(--ink-soft);line-height:1.7}
@@ -266,9 +267,8 @@
   }
   @media(max-width:860px){
     .cats-inner{padding:0 20px}
-    .cats-track{grid-auto-flow:column;grid-auto-columns:78%;grid-template-columns:none;
-      overflow-x:auto;scroll-snap-type:x mandatory;gap:18px;padding-bottom:10px;-webkit-overflow-scrolling:touch}
-    .cat-card{scroll-snap-align:center}
+    .cats-track{grid-template-columns:1fr;gap:18px;overflow:visible;padding-bottom:0}
+    .cat-card{scroll-snap-align:none;margin-bottom:28px}
     .cat-card:nth-child(1),.cat-card:nth-child(2),.cat-card:nth-child(3){transform:none}
   }
 
@@ -305,6 +305,13 @@
     .detail.img-left .detail-media{order:0}
     .detail-media{height:56vw;min-height:300px}
     .detail.img-right .detail-media .frame,.detail.img-left .detail-media .frame{left:-32px;right:-32px}
+    .detail-media::before{background:none!important}
+  }
+
+  @media(max-width:900px){
+    .hero-media{width:100vw;margin-left:0}
+    .hero-media img{inset:0;width:100%;height:100%;object-fit:cover;transform:none!important}
+    .hero-cred .cred-line{display:block}
   }
 
   /* ---------- Galeria complementar (ref. Spasante) ---------- */
@@ -454,7 +461,7 @@
         <a class="btn btn-primary" href="https://wa.me/5511945855039" target="_blank" rel="noopener">Agendar consulta</a>
         <a class="btn btn-outline" href="#procedimentos">Ver procedimentos</a>
       </div>
-      <p class="hero-cred">CRM 94.951 &nbsp;·&nbsp; RQE 93868</p>
+      <p class="hero-cred"><span class="cred-line">CRM 94.951 &nbsp;·&nbsp;</span> <span class="cred-line">RQE 93868</span></p>
     </div>
     <div class="hero-media">
       <img id="heroImg" src="assets/ambiente-recepcao.jpg" alt="Recepção da clínica da Dra. Ana Lídia Meloncini" />
@@ -802,7 +809,7 @@
   var pxEls = [];
   if(!reduce){
     var hero = document.getElementById('heroImg');
-    if(hero) pxEls.push({el:hero, k:0.06});
+    if(hero && window.innerWidth > 900) pxEls.push({el:hero, k:0.06});
     document.querySelectorAll('.detail-media img').forEach(function(img){ pxEls.push({el:img, k:0.05}); });
     window.addEventListener('scroll', function(){
       var vh = window.innerHeight;
