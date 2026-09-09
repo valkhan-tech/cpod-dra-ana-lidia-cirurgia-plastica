@@ -249,16 +249,6 @@
     .proc-badge img{width:40px;height:40px}
   }
 
-  /* Também atendo — uma linha, não uma seção de cards */
-  .alsolist{display:grid;grid-template-columns:auto repeat(3,1fr);gap:clamp(22px,4vw,44px);align-items:center;padding:36px 0 0;border-top:1px solid var(--hairline)}
-  .alsolist .label{font-size:.7rem;font-weight:500;letter-spacing:.26em;text-transform:uppercase;color:var(--taupe);white-space:nowrap}
-  .also{display:flex;gap:14px;align-items:flex-start}
-  .also img{width:34px;height:34px;flex:none;margin-top:4px;opacity:.9}
-  .also h4{font-family:var(--sans);font-weight:600;font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;color:var(--espresso);margin-bottom:3px}
-  .also p{font-size:.82rem;color:var(--ink-soft);line-height:1.55}
-  @media(max-width:980px){.alsolist{grid-template-columns:1fr 1fr;gap:26px}.alsolist .label{grid-column:1/-1}}
-  @media(max-width:560px){.alsolist{grid-template-columns:1fr}}
-
   /* ============================================================
      COMO FUNCIONA — jornada da paciente em 4 passos
      ============================================================ */
@@ -282,6 +272,34 @@
     .steps::before{display:none}
   }
   @media(max-width:560px){.steps{grid-template-columns:1fr}}
+
+  /* ============================================================
+     TAMBÉM ATENDO — outras áreas de atuação em 3 cards
+     ============================================================ */
+  .also-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,2.6vw,32px)}
+  .also-card{
+    display:flex;flex-direction:column;gap:18px;
+    background:var(--card);border:1px solid var(--line);
+    border-radius:6px;padding:clamp(30px,3.4vw,44px);
+    box-shadow:var(--shadow);
+    transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease;
+  }
+  .also-card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 40px 80px -32px rgba(58,44,32,.42);
+    border-color:rgba(135,107,85,.4);
+  }
+  .also-card .icon{
+    width:56px;height:56px;display:flex;align-items:center;justify-content:center;
+    background:var(--linen);border-radius:50%;
+  }
+  .also-card .icon img{width:28px;height:28px}
+  .also-card h3{
+    font-family:var(--sans);font-weight:600;font-size:.78rem;
+    letter-spacing:.18em;text-transform:uppercase;color:var(--taupe);
+  }
+  .also-card p{font-size:.95rem;color:var(--ink-soft);line-height:1.7;margin:0}
+  @media(max-width:860px){.also-cards{grid-template-columns:1fr}}
 
   /* ============================================================
      ONDE ATENDO — card espresso sobre seção clara + mapa
@@ -529,27 +547,6 @@
         </div>
       </div>
     </section>
-
-    <!-- Também atendo — uma linha, em vez de uma seção de cards repetida -->
-    <section style="padding-top:0">
-      <div class="wrap">
-        <div class="alsolist reveal">
-          <span class="label">Também atendo</span>
-          <a class="also" href="https://wa.me/5511945855039?text=Tenho%20interesse%20em%20procedimentos%20de%20face" target="_blank" rel="noopener">
-            <img src="assets/ico_face.png" alt="Ícone Face" />
-            <div><h4>Face</h4><p>Rejuvenescimento e harmonização facial.</p></div>
-          </a>
-          <a class="also" href="https://wa.me/5511945855039?text=Tenho%20interesse%20em%20est%C3%A9tica" target="_blank" rel="noopener">
-            <img src="assets/ico_estetica.png" alt="Ícone Estética" />
-            <div><h4>Estética</h4><p>Tratamentos que complementam o resultado.</p></div>
-          </a>
-          <a class="also" href="https://wa.me/5511945855039?text=Quero%20saber%20sobre%20as%20tecnologias%20utilizadas" target="_blank" rel="noopener">
-            <img src="assets/ico_tecnologias.png" alt="Ícone Tecnologias" />
-            <div><h4>Tecnologias</h4><p>Recursos a favor da recuperação e da qualidade.</p></div>
-          </a>
-        </div>
-      </div>
-    </section>
   </div>
 
   <!-- ==================== COMO FUNCIONA ===================== -->
@@ -585,6 +582,34 @@
       </div>
       <div class="processo-cta reveal">
         <a class="btn btn-primary" href="https://wa.me/5511945855039" target="_blank" rel="noopener">Agendar uma avaliação</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== TAMBÉM ATENDO ====================== -->
+  <section id="tambem-atendo" class="tambem">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Também atendo</span>
+        <h2>Outras áreas de atuação</h2>
+        <p>Para além de mama e contorno corporal, a dra. Ana Lídia também conduz estas frentes — com a mesma escuta, o mesmo rigor e o mesmo olhar de detalhe.</p>
+      </div>
+      <div class="also-cards reveal">
+        <a class="also-card" href="https://wa.me/5511945855039?text=Tenho%20interesse%20em%20procedimentos%20de%20face" target="_blank" rel="noopener">
+          <span class="icon"><img src="assets/ico_face.png" alt="" /></span>
+          <h3>Face</h3>
+          <p>Rejuvenescimento e harmonização facial, com a leveza e a naturalidade como norte.</p>
+        </a>
+        <a class="also-card" href="https://wa.me/5511945855039?text=Tenho%20interesse%20em%20est%C3%A9tica" target="_blank" rel="noopener">
+          <span class="icon"><img src="assets/ico_estetica.png" alt="" /></span>
+          <h3>Estética</h3>
+          <p>Tratamentos não cirúrgicos que acompanham e prolongam o resultado da cirurgia.</p>
+        </a>
+        <a class="also-card" href="https://wa.me/5511945855039?text=Quero%20saber%20sobre%20as%20tecnologias%20utilizadas" target="_blank" rel="noopener">
+          <span class="icon"><img src="assets/ico_tecnologias.png" alt="" /></span>
+          <h3>Tecnologias</h3>
+          <p>Recursos e protocolos a favor da recuperação, do conforto e da qualidade do resultado.</p>
+        </a>
       </div>
     </div>
   </section>
