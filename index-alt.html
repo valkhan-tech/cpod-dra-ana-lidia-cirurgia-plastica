@@ -276,7 +276,22 @@
   /* ============================================================
      TAMBÉM ATENDO — outras áreas de atuação em 3 cards
      ============================================================ */
-  .tambem{border-top:1px solid rgba(135,107,85,.14)}
+  .tambem{border-top:1px solid rgba(135,107,85,.14);overflow:hidden}
+  .tambem::after{
+    content:"";
+    position:absolute;
+    bottom:-16rem;
+    width:100vw;
+    aspect-ratio:3/1;
+    background-image:url(assets/logo_wordmark_brown.png);
+    background-position:center;
+    background-repeat:no-repeat;
+    background-size:78% auto;
+    opacity:.25;
+    pointer-events:none;
+    z-index:0;
+  }
+  .tambem > .wrap{position:relative;z-index:1}
   .also-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,2.6vw,32px)}
   .also-card{
     display:flex;flex-direction:column;gap:18px;
