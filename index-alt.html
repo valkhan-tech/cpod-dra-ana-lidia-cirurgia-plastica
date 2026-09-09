@@ -176,8 +176,8 @@
      ============================================================ */
   .about{display:grid;grid-template-columns:0.86fr 1.14fr;gap:clamp(36px,6vw,84px);align-items:center}
   .about-figure{position:relative}
-  .about-figure img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:4px;filter:sepia(.06)}
-  .about-figure::before{content:"";position:absolute;left:-22px;top:-22px;right:34px;bottom:34px;border:1px solid var(--gold);z-index:-1}
+  .about-figure img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:.5rem 4rem;filter:sepia(.06)}
+  .about-figure::before{content:"";position:absolute;left:-22px;top:-22px;right:34px;bottom:34px;border:1px solid var(--gold);border-radius:.5rem 4rem;z-index:-1}
   .about-body h2{font-size:clamp(2rem,4vw,2.9rem);color:var(--taupe);margin-bottom:22px}
   .about-body p{color:var(--ink-soft);margin-bottom:18px;max-width:54ch}
   .about-facts{display:grid;grid-template-columns:repeat(3,1fr);gap:26px 40px;margin-top:34px;border-top:1px solid var(--hairline);padding-top:30px}
@@ -308,12 +308,12 @@
   .place{background:var(--linen);position:relative;z-index:0}
   .place-grid{display:grid;grid-template-columns:1fr minmax(300px,430px);align-items:center}
   .place-card{
-    background:var(--espresso);color:#E9DCCC;border-radius:6px;position:relative;
+    background:var(--espresso);color:#E9DCCC;border-radius:4rem .5rem;position:relative;
     padding:clamp(38px,4vw,54px);margin-left:clamp(-72px,-4vw,-32px);box-shadow:var(--shadow);
   }
   .place-card::before{
     content:"";position:absolute;left:34px;top:34px;right:-22px;bottom:-22px;
-    border:1px solid var(--gold);z-index:-1;pointer-events:none;
+    border:1px solid var(--gold);border-radius:4rem .5rem;z-index:-1;pointer-events:none;
   }
   .place-card .eyebrow{color:var(--gold)}
   .place-card h2{color:#F5EDE2;margin-bottom:20px}
