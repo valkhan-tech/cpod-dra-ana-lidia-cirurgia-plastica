@@ -315,7 +315,60 @@
     letter-spacing:.18em;text-transform:uppercase;color:var(--taupe);
   }
   .also-card p{font-size:.95rem;color:var(--ink-soft);line-height:1.7;margin:0}
+  .also-card .more{
+    display:inline-flex;align-items:center;gap:9px;margin-top:auto;
+    font-family:var(--sans);font-weight:600;font-size:.72rem;
+    letter-spacing:.18em;text-transform:uppercase;color:var(--gold);
+    opacity:0;transform:translateX(28px);
+    transition:opacity .3s ease,transform .5s cubic-bezier(.22,.61,.36,1),gap .3s ease;
+  }
+  .also-card:hover .more{opacity:1;transform:translateX(0);gap:13px}
   @media(max-width:860px){.also-cards{grid-template-columns:1fr}}
+
+  /* ============================================================
+     ESPECIALISTAS — carrossel com a dra. e profissionais parceiros
+     ============================================================ */
+  .team{overflow:hidden;background:var(--linen)}
+  .team-head{margin-bottom:clamp(28px,4vw,44px)}
+  .team-eyebrow{display:inline-flex;align-items:center;gap:14px;font-size:.7rem;letter-spacing:.26em;text-transform:uppercase;color:var(--taupe)}
+  .team-eyebrow::before{content:"";width:36px;height:1px;background:var(--gold);flex:none}
+  .team-viewport{position:relative;overflow:visible;margin:0 -32px;padding:0 32px}
+  .team-controls{position:absolute;z-index:4;top:50%;left:-32px;right:-32px;display:flex;justify-content:space-between;gap:10px;transform:translateY(-50%);pointer-events:none}
+  .team-control{width:48px;height:48px;border:1px solid rgba(135,107,85,.5);border-radius:50%;background:var(--card);color:var(--taupe);display:grid;place-items:center;cursor:pointer;transition:background .22s ease,color .22s ease,transform .22s ease}
+  .team-control{pointer-events:auto}
+  .team-control:hover:not(:disabled){background:var(--taupe);color:#fff;transform:translateY(-2px)}
+  .team-control:focus-visible{outline:3px solid var(--taupe);outline-offset:3px}
+  .team-control:disabled{opacity:.35;cursor:not-allowed}
+  .team-control svg{width:18px;height:18px}
+  .team-track-window{overflow:hidden}
+  .team-track{display:flex;gap:0;transition:transform .55s cubic-bezier(.22,.61,.36,1);will-change:transform}
+  .team-card{height:min(64vh,500px);min-width:100%;display:grid;grid-template-columns:minmax(280px,.9fr) minmax(0,1.1fr);background:var(--card);border:1px solid var(--line);box-shadow:0 45px 90px -32px rgba(33,24,14,.55);border-radius:8px;overflow:hidden}
+  .team-photo{min-height:0;background:var(--linen);position:relative;overflow:hidden}
+  .team-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 60%,rgba(245,240,232,.22))}
+  .team-photo img{width:100%;height:100%;object-fit:cover;object-position:center;filter:sepia(.05)}
+  .team-card.is-placeholder .team-photo{display:grid;place-items:center;background:var(--taupe)}
+  .team-card.is-placeholder .team-photo::before{content:"";width:110px;height:110px;background:url(assets/logo_monogram_cream.png) center/contain no-repeat;opacity:.85}
+  .team-copy{padding:clamp(30px,4vw,48px);display:flex;flex-direction:column;justify-content:center}
+  .team-copy h3{font-size:clamp(1.6rem,2.8vw,2.3rem);color:var(--taupe);margin-bottom:7px}
+  .team-role{font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:14px}
+  .team-copy p{font-size:.85rem;line-height:1.6;color:var(--ink-soft);max-width:46ch;margin-bottom:14px}
+  .team-meta{border-top:1px solid var(--line);padding-top:14px;margin-bottom:18px;color:var(--ink-soft);font-size:.76rem;letter-spacing:.04em}
+  .team-links{display:flex;flex-wrap:wrap;gap:12px}
+  .team-links .btn{font-size:.62rem;padding:11px 17px}
+  .team-dots{display:flex;justify-content:center;gap:9px;margin-top:28px}
+  .team-dot{width:8px;height:8px;padding:0;border:0;border-radius:50%;background:rgba(135,107,85,.35);cursor:pointer;transition:transform .2s ease,background .2s ease}
+  .team-dot.active{background:var(--taupe);transform:scale(1.35)}
+  .team-dot:focus-visible{outline:3px solid var(--taupe);outline-offset:3px}
+  @media(max-width:980px){
+    .team-viewport{margin:0 -20px;padding:0 20px}
+    .team-controls{top:50%;left:4px;right:4px;justify-content:space-between;transform:translateY(-50%)}
+    .team-card{height:min(78vh,760px);grid-template-columns:1fr;grid-template-rows:38% 62%}
+    .team-photo{height:auto;min-height:0;max-height:none}
+    .team-copy{padding:26px 26px 32px}
+    .team-copy h3{font-size:1.6rem}
+    .team-copy p{font-size:.86rem;line-height:1.6;margin-bottom:14px}
+  }
+  @media(prefers-reduced-motion:reduce){.team-track{transition:none}}
 
   /* ============================================================
      ONDE ATENDO — card espresso sobre seção clara + mapa
@@ -342,7 +395,7 @@
     transition:gap .24s ease,color .24s ease,border-color .24s ease;
   }
   .place-card .link:hover{gap:15px;color:#F5EDE2}
-  .place-map{height:clamp(380px,42vw,500px);border-radius:6px;overflow:hidden}
+  .place-map{height:clamp(380px,42vw,500px);border-radius:6px;overflow:hidden;background:var(--linen)}
   .place-map iframe{width:100%;height:100%;border:0;filter:grayscale(.5) sepia(.16) contrast(.96)}
   @media(max-width:920px){
     .place-grid{grid-template-columns:1fr}
@@ -602,6 +655,64 @@
     </div>
   </section>
 
+  <!-- ================== ESPECIALISTAS ======================== -->
+  <section id="especialistas" class="team">
+    <div class="wrap">
+      <div class="team-head reveal">
+        <span class="team-eyebrow">Nossos especialistas</span>
+      </div>
+      <div class="team-viewport reveal" aria-live="polite">
+        <div class="team-controls" aria-label="Controles do carrossel de especialistas">
+          <button class="team-control" id="teamPrev" type="button" aria-label="Especialista anterior">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m15 18-6-6 6-6" /></svg>
+          </button>
+          <button class="team-control" id="teamNext" type="button" aria-label="Próximo especialista">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>
+          </button>
+        </div>
+        <div class="team-track-window">
+          <div class="team-track" id="teamTrack">
+            <article class="team-card">
+              <div class="team-photo"><img src="assets/brand-necessaire.jpg" alt="Dra. Ana Lídia Meloncini — universo visual da clínica" /></div>
+              <div class="team-copy">
+                <span class="eyebrow">Cirurgia plástica</span>
+                <h3>Dra. Ana Lídia Meloncini</h3>
+                <p class="team-role">Cirurgiã plástica</p>
+                <p>Especialista em contorno corporal e cirurgia mamária, com atendimento direto e um plano claro em cada etapa — da avaliação à recuperação.</p>
+                <p class="team-meta">CRM 94.951 · RQE 93.868</p>
+                <div class="team-links">
+                  <a class="btn btn-primary" href="https://wa.me/5511945855039" target="_blank" rel="noopener">Agendar consulta</a>
+                  <a class="btn btn-outline" href="https://instagram.com/analidiameloncini" target="_blank" rel="noopener">Instagram</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="team-card is-placeholder">
+              <div class="team-photo" aria-hidden="true"></div>
+              <div class="team-copy">
+                <span class="eyebrow">Em breve</span>
+                <h3>Mais uma especialista</h3>
+                <p class="team-role">Perfil em atualização</p>
+                <p>Em breve, você poderá conhecer outra profissional que faz parte da rede de cuidado da clínica.</p>
+              </div>
+            </article>
+
+            <article class="team-card is-placeholder">
+              <div class="team-photo" aria-hidden="true"></div>
+              <div class="team-copy">
+                <span class="eyebrow">Em breve</span>
+                <h3>Mais um especialista</h3>
+                <p class="team-role">Perfil em atualização</p>
+                <p>Estamos preparando este perfil para apresentar todos os profissionais que acompanham nossas pacientes.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+      <div class="team-dots" id="teamDots" aria-label="Selecionar especialista"></div>
+    </div>
+  </section>
+
   <!-- ==================== TAMBÉM ATENDO ====================== -->
   <section id="tambem-atendo" class="tambem">
     <div class="wrap">
@@ -615,16 +726,19 @@
           <span class="icon"><img src="assets/ico_face.png" alt="" /></span>
           <h3>Face</h3>
           <p>Rejuvenescimento e harmonização facial, com a leveza e a naturalidade como norte.</p>
+          <span class="more">Saiba mais <span aria-hidden="true">→</span></span>
         </a>
         <a class="also-card" href="https://wa.me/5511945855039?text=Tenho%20interesse%20em%20est%C3%A9tica" target="_blank" rel="noopener">
           <span class="icon"><img src="assets/ico_estetica.png" alt="" /></span>
           <h3>Estética</h3>
           <p>Tratamentos não cirúrgicos que acompanham e prolongam o resultado da cirurgia.</p>
+          <span class="more">Saiba mais <span aria-hidden="true">→</span></span>
         </a>
         <a class="also-card" href="https://wa.me/5511945855039?text=Quero%20saber%20sobre%20as%20tecnologias%20utilizadas" target="_blank" rel="noopener">
           <span class="icon"><img src="assets/ico_tecnologias.png" alt="" /></span>
           <h3>Tecnologias</h3>
           <p>Recursos e protocolos a favor da recuperação, do conforto e da qualidade do resultado.</p>
+          <span class="more">Saiba mais <span aria-hidden="true">→</span></span>
         </a>
       </div>
     </div>
@@ -635,7 +749,7 @@
     <div class="wrap">
       <div class="place-grid reveal">
         <div class="place-map">
-          <iframe title="Mapa — Rua Guarará, 529, Jardim Paulista, São Paulo" loading="lazy" src="https://www.google.com/maps?q=Rua%20Guarar%C3%A1%20529%20Jardim%20Paulista%20S%C3%A3o%20Paulo&output=embed"></iframe>
+          <iframe title="Mapa — Rua Guarará, 529, Jardim Paulista, São Paulo" src="https://www.google.com/maps?q=Rua%20Guarar%C3%A1%20529%20Jardim%20Paulista%20S%C3%A3o%20Paulo&output=embed"></iframe>
         </div>
         <div class="place-card">
           <span class="eyebrow">Onde atendo</span>
@@ -738,6 +852,39 @@
     es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
   },{threshold:.12});
   document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+  // Carrossel de especialistas
+  var teamTrack = document.getElementById('teamTrack');
+  var teamDots = document.getElementById('teamDots');
+  var teamPrev = document.getElementById('teamPrev');
+  var teamNext = document.getElementById('teamNext');
+  var teamIndex = 0;
+  var teamCount = teamTrack ? teamTrack.children.length : 0;
+  if(teamTrack && teamDots){
+    for(var dotIndex = 0; dotIndex < teamCount; dotIndex++){
+      var dot = document.createElement('button');
+      dot.className = 'team-dot';
+      dot.type = 'button';
+      dot.setAttribute('aria-label', 'Ver especialista ' + (dotIndex + 1));
+      dot.addEventListener('click', function(){ teamGoTo(Number(this.dataset.index)); });
+      dot.dataset.index = dotIndex;
+      teamDots.appendChild(dot);
+    }
+    function teamGoTo(index){
+      teamIndex = Math.max(0, Math.min(index, teamCount - 1));
+      var slideWidth = teamTrack.parentElement.getBoundingClientRect().width;
+      teamTrack.style.transform = 'translateX(-' + (teamIndex * slideWidth) + 'px)';
+      Array.prototype.forEach.call(teamDots.children, function(dot, dotPosition){
+        dot.classList.toggle('active', dotPosition === teamIndex);
+        dot.setAttribute('aria-current', dotPosition === teamIndex ? 'true' : 'false');
+      });
+      if(teamPrev) teamPrev.disabled = teamIndex === 0;
+      if(teamNext) teamNext.disabled = teamIndex === teamCount - 1;
+    }
+    teamPrev.addEventListener('click', function(){ teamGoTo(teamIndex - 1); });
+    teamNext.addEventListener('click', function(){ teamGoTo(teamIndex + 1); });
+    teamGoTo(0);
+  }
 
   // Parallax suave — hero + fotos dos procedimentos
   var pxEls = [];
