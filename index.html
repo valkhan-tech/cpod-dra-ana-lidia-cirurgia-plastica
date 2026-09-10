@@ -165,11 +165,13 @@
   @media(max-width:900px){
     .hero{grid-template-columns:1fr;min-height:auto}
     .hero-text{padding:clamp(72px,10vw,104px) 32px clamp(44px,6vw,60px);order:1}
-    .hero-media{order:2;min-height:0;aspect-ratio:16/10;max-height:52vh}
+    /* .hero-media só tem filhos position:absolute (a foto e o ::after), então não tem
+       conteúdo em fluxo para gerar altura. No desktop o min-height:60vh segura a caixa;
+       aqui a altura viria só do aspect-ratio — e o Safari ignora o aspect-ratio de um
+       grid item esticado, resolvendo a linha pelo conteúdo (zero) e sumindo com a foto.
+       align-self:start tira o stretch; o min-height garante a altura mesmo assim. */
+    .hero-media{order:2;align-self:start;aspect-ratio:16/10;min-height:min(62.5vw,52vh);max-height:52vh}
     .hero-media::after{background:linear-gradient(180deg,rgba(245,240,232,.5) 0%,transparent 30%)}
-    @supports not (aspect-ratio:16/10){
-      .hero-media{min-height:min(62vw,52vh)}
-    }
   }
 
   /* ============================================================
@@ -188,8 +190,8 @@
      A CIRURGIÃ
      ============================================================ */
   .about{display:grid;grid-template-columns:0.86fr 1.14fr;gap:clamp(36px,6vw,84px);align-items:center}
-  .about-figure{position:relative}
-  .about-figure img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:.5rem 4rem;filter:sepia(.06)}
+  .about-figure{position:relative;z-index:0;aspect-ratio:4/5}
+  .about-figure img{display:block;width:100%;height:100%;object-fit:cover;border-radius:.5rem 4rem;filter:sepia(.06)}
   .about-figure::before{content:"";position:absolute;left:-22px;top:-22px;right:34px;bottom:34px;border:1px solid var(--gold);border-radius:.5rem 4rem;z-index:-1}
   .about-body h2{font-size:clamp(2rem,4vw,2.9rem);color:var(--taupe);margin-bottom:22px}
   .about-body p{color:var(--ink-soft);margin-bottom:18px;max-width:54ch}
@@ -505,7 +507,6 @@
     .hero-text{padding:clamp(52px,11vw,72px) 22px 34px}
     .hero-text .eyebrow{margin-bottom:18px;font-size:.68rem}
     .hero-text h1{font-size:clamp(2.2rem,9.2vw,2.8rem);line-height:1.14;margin-bottom:18px;max-width:11ch}
-    .hero-media{min-height:0}
     .hero-text p{font-size:clamp(.97rem,3.9vw,1.02rem);line-height:1.72;margin-bottom:28px}
     .hero-signature{margin-top:26px;font-size:.64rem;letter-spacing:.22em}
 
@@ -594,7 +595,7 @@
     <div class="wrap">
       <div class="about reveal">
         <figure class="about-figure">
-          <img src="assets/brand-necessaire.jpg" alt="Detalhe do universo da marca da Dra. Ana Lídia" />
+          <img src="assets/brand-necessaire.jpg" width="1600" height="867" loading="lazy" decoding="async" alt="Detalhe do universo da marca da Dra. Ana Lídia" />
         </figure>
         <div class="about-body">
           <span class="eyebrow">A cirurgiã</span>
