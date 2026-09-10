@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="color-scheme" content="only light" />
 <title>Dra. Ana Lídia Meloncini — Cirurgia Plástica</title>
 <meta name="description" content="Cirurgia plástica em São Paulo com foco em naturalidade. Mama, contorno corporal e lipoescultura. Agende sua consulta pelo WhatsApp." />
 <meta property="og:title" content="Dra. Ana Lídia Meloncini — Cirurgia Plástica" />
@@ -36,6 +37,7 @@
     --serif:"Playfair Display",Georgia,"Times New Roman",serif;
     --sans:"Montserrat","Helvetica Neue",Arial,sans-serif;
     --shadow:0 30px 70px -28px rgba(58,44,32,.38);
+    color-scheme:only light;
   }
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
@@ -96,6 +98,7 @@
   .nav a::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:0;background:var(--gold);transition:width .25s ease}
   .nav a:hover::after{width:100%}
   .header-cta{margin-left:auto;padding:11px 21px;font-size:.7rem}
+  .nav a.btn-primary{color:#F3E8DA}
   .nav .menu-cta{display:none}
 
   /* Menu mobile */
@@ -114,7 +117,7 @@
     .menu-toggle{display:block}
     .nav{
       position:absolute;top:100%;left:0;right:0;display:none;
-      background:rgba(245,240,232,.98);backdrop-filter:blur(10px);
+      background:var(--cream);
       flex-direction:column;align-items:flex-start;gap:0;padding:6px 32px 20px;
       border-bottom:1px solid rgba(135,107,85,.18);
       box-shadow:0 34px 44px -30px rgba(58,44,32,.32);
@@ -124,17 +127,24 @@
     .nav a:last-of-type{border-bottom:0}
     .nav .menu-cta{display:inline-flex;margin-top:18px;align-self:flex-start;width:auto;padding:13px 26px;border-radius:40px;border-bottom:0}
     .nav .menu-cta::after{display:none}
+    .header-cta{display:none}
   }
   @media(max-width:640px){
-    .header-cta{display:none}
+    .header-inner{position:relative;padding:12px 22px}
+    .brand{position:absolute;left:50%;transform:translateX(-50%);z-index:130}
     .brand img{height:26px;width:auto}
+    .menu-toggle{width:36px;height:36px}
+    .menu-toggle span,.menu-toggle span::before,.menu-toggle span::after{left:9px;width:18px;height:2px}
+    .menu-toggle span{top:17px}
+    .menu-toggle span::before{top:-6px}
+    .menu-toggle span::after{top:6px}
   }
 
   /* ============================================================
      HERO — atenção no headline, foto abrindo, sem CRM competindo
      ============================================================ */
-  .hero{padding:0;min-height:88vh;display:grid;grid-template-columns:1.05fr .95fr;align-items:stretch;position:relative;overflow:hidden}
-  .hero-text{display:flex;flex-direction:column;justify-content:center;padding:120px 6vw 120px 0;padding-left:max(32px,calc((100vw - var(--max))/2 + 32px));position:relative;z-index:2}
+  .hero{padding:0;min-height:min(78vh,760px);display:grid;grid-template-columns:1.05fr .95fr;align-items:stretch;position:relative;overflow:hidden}
+  .hero-text{display:flex;flex-direction:column;justify-content:center;padding:clamp(64px,9vh,104px) 6vw;padding-right:0;padding-left:max(32px,calc((100vw - var(--max))/2 + 32px));position:relative;z-index:2}
   .hero-text .eyebrow{margin-bottom:24px}
   .hero-text h1{font-size:clamp(2.6rem,5.4vw,4.3rem);color:var(--ink);margin-bottom:24px;max-width:14ch}
   .hero-text h1 em{font-style:italic;color:var(--taupe);font-weight:500}
@@ -147,22 +157,25 @@
   .hero-signature::before{content:"";width:36px;height:1px;background:var(--gold);flex:none}
 
   .hero-media{position:relative;overflow:hidden;min-height:60vh}
-  .hero-media img{position:absolute;inset:-8%;width:116%;height:116%;object-fit:cover;will-change:transform}
+  .hero-media img{position:absolute;inset:-8%;width:116%;height:116%;max-width:none;object-fit:cover;will-change:transform}
   .hero-media::after{content:"";position:absolute;inset:0;pointer-events:none;
     background:linear-gradient(270deg,transparent 0%,transparent 55%,rgba(245,240,232,.6) 80%,var(--cream) 100%);
   }
-  .hero-monogram{position:absolute;right:-60px;bottom:-90px;width:420px;opacity:.06;z-index:1;pointer-events:none}
+  .hero-monogram{position:absolute;right:-60px;bottom:-90px;width:380px;opacity:.06;z-index:1;pointer-events:none}
   @media(max-width:900px){
     .hero{grid-template-columns:1fr;min-height:auto}
-    .hero-text{padding:64px 32px 56px;order:2}
-    .hero-media{order:1;min-height:50vh}
-    .hero-media::after{background:linear-gradient(0deg,rgba(245,240,232,.4) 0%,transparent 28%)}
+    .hero-text{padding:clamp(72px,10vw,104px) 32px clamp(44px,6vw,60px);order:1}
+    .hero-media{order:2;min-height:0;aspect-ratio:16/10;max-height:52vh}
+    .hero-media::after{background:linear-gradient(180deg,rgba(245,240,232,.5) 0%,transparent 30%)}
+    @supports not (aspect-ratio:16/10){
+      .hero-media{min-height:min(62vw,52vh)}
+    }
   }
 
   /* ============================================================
      FAIXA DE ASSINATURA — manifesto único, não stat bar
      ============================================================ */
-  .signature{padding:30px 0;background:var(--linen);border-top:1px solid rgba(135,107,85,.14);border-bottom:1px solid rgba(135,107,85,.14)}
+  .signature{padding:30px 0;background:var(--linen);border-top:1px solid rgba(135,107,85,.14);border-bottom:1px solid rgba(135,107,85,.14);position:relative;z-index:2}
   .signature-inner{display:flex;align-items:center;justify-content:center;gap:24px;text-align:center}
   .signature-inner p{font-family:var(--serif);font-style:italic;font-size:clamp(1.05rem,1.6vw,1.28rem);color:var(--espresso);max-width:48ch;line-height:1.45}
   .signature-mark{flex:none;width:34px;height:1px;background:var(--gold)}
@@ -185,7 +198,7 @@
   .about-facts p{font-size:.94rem;margin:0;line-height:1.65}
   @media(max-width:820px){
     .about{grid-template-columns:1fr;gap:48px}
-    .about-figure{max-width:440px}
+    .about-figure{max-width:440px;margin:0 auto}
     .about-figure::before{right:24px}
     .about-facts{grid-template-columns:1fr;gap:20px}
   }
@@ -242,9 +255,11 @@
   @media(max-width:980px){
     .proc{padding:72px 0}
     .proc.img-right .proc-grid,.proc.img-left .proc-grid{grid-template-columns:1fr;gap:30px}
-    .proc-media{aspect-ratio:auto;height:clamp(300px,64vw,480px)}
+    .proc-media{aspect-ratio:auto;height:clamp(340px,78vw,520px)}
     .proc.img-left .proc-media,.proc.img-left .proc-card{grid-column:auto;grid-row:auto}
-    .proc.img-right .proc-card,.proc.img-left .proc-card{margin:0}
+    .proc.img-right .proc-card,.proc.img-left .proc-card{margin:-70px 0 0}
+    .proc-badge{top:22px;bottom:auto}
+    .proc.img-left .proc-badge{right:auto;left:22px}
     .proc-badge{width:72px;height:72px}
     .proc-badge img{width:40px;height:40px}
   }
@@ -253,7 +268,7 @@
      COMO FUNCIONA — jornada da paciente em 4 passos
      ============================================================ */
   .processo{overflow:hidden}
-  .processo .mono{position:absolute;right:-90px;top:50%;transform:translateY(-50%);width:460px;opacity:.05;pointer-events:none}
+  .processo .mono{position:absolute;right:-90px;top:50%;transform:translateY(-50%);width:410px;opacity:.05;pointer-events:none}
   .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(24px,3.5vw,44px);position:relative;margin-top:6px}
   .steps::before{content:"";position:absolute;top:34px;left:4%;right:4%;height:1px;background:rgba(135,107,85,.25)}
   .step{position:relative;padding-top:92px}
@@ -271,7 +286,13 @@
     .steps{grid-template-columns:repeat(2,1fr);gap:44px 36px}
     .steps::before{display:none}
   }
-  @media(max-width:560px){.steps{grid-template-columns:1fr}}
+  @media(max-width:560px){
+    .steps{grid-template-columns:1fr;gap:28px}
+    .step{padding:0 0 0 66px;min-height:52px;display:flex;flex-direction:column;justify-content:center}
+    .step .n{width:52px;height:52px;font-size:1rem;top:50%;transform:translateY(-50%)}
+    .step p{max-width:none}
+    .processo-cta{margin-top:44px}
+  }
 
   /* ============================================================
      TAMBÉM ATENDO — outras áreas de atuação em 3 cards
@@ -283,7 +304,7 @@
     bottom:-16rem;
     width:100vw;
     aspect-ratio:3/1;
-    background-image:url(assets/logo_wordmark_brown.png);
+    background-image:url(assets/logo_wordmark_brown.webp);
     background-position:center;
     background-repeat:no-repeat;
     background-size:78% auto;
@@ -324,18 +345,25 @@
     transition:opacity .3s ease,transform .5s cubic-bezier(.22,.61,.36,1),gap .3s ease;
   }
   .also-card:hover .more{opacity:1;transform:translateX(0);gap:13px}
-  @media(max-width:860px){.also-cards{grid-template-columns:1fr}}
+  @media(hover:none){
+    .also-card .more{opacity:1;transform:none}
+  }
+  @media(max-width:860px){
+    .also-cards{grid-template-columns:1fr}
+    .tambem::after{display:none}
+  }
 
   /* ============================================================
      MODAL — "Saiba mais" dos cards Também atendo
      ============================================================ */
   .modal{
-    position:fixed;inset:0;z-index:90;display:grid;place-items:center;
+    position:fixed;inset:0;z-index:240;display:grid;place-items:center;
     padding:24px;overflow-y:auto;cursor:default;
     opacity:0;visibility:hidden;
     transition:opacity .25s ease,visibility .25s ease;
   }
   .modal.open{opacity:1;visibility:visible}
+  body.modal-open{overflow:hidden}
   .modal-overlay{position:absolute;inset:0;background:rgba(42,31,22,.55);backdrop-filter:blur(3px);cursor:pointer}
   .modal-card{
     position:relative;width:min(560px,100%);margin:auto;
@@ -372,52 +400,6 @@
   @media(prefers-reduced-motion:reduce){.modal,.modal-card{transition:none}}
 
   /* ============================================================
-     ESPECIALISTAS — carrossel com a dra. e profissionais parceiros
-     ============================================================ */
-  .team{overflow:hidden;background:var(--linen)}
-  .team-head{margin-bottom:clamp(28px,4vw,44px)}
-  .team-eyebrow{display:inline-flex;align-items:center;gap:14px;font-size:.7rem;letter-spacing:.26em;text-transform:uppercase;color:var(--taupe)}
-  .team-eyebrow::before{content:"";width:36px;height:1px;background:var(--gold);flex:none}
-  .team-head p{font-family:var(--serif);font-style:italic;font-size:clamp(1rem,1.5vw,1.22rem);color:var(--taupe);margin-top:14px}
-  .team-viewport{position:relative;overflow:visible;margin:0 -32px;padding:0 32px}
-  .team-controls{position:absolute;z-index:4;top:50%;left:-32px;right:-32px;display:flex;justify-content:space-between;gap:10px;transform:translateY(-50%);pointer-events:none}
-  .team-control{width:48px;height:48px;border:1px solid rgba(135,107,85,.5);border-radius:50%;background:var(--card);color:var(--taupe);display:grid;place-items:center;cursor:pointer;transition:background .22s ease,color .22s ease,transform .22s ease}
-  .team-control{pointer-events:auto}
-  .team-control:hover:not(:disabled){background:var(--taupe);color:#fff;transform:translateY(-2px)}
-  .team-control:focus-visible{outline:3px solid var(--taupe);outline-offset:3px}
-  .team-control:disabled{opacity:.35;cursor:not-allowed}
-  .team-control svg{width:18px;height:18px}
-  .team-track-window{overflow:hidden}
-  .team-track{display:flex;gap:0;transition:transform .55s cubic-bezier(.22,.61,.36,1);will-change:transform}
-  .team-card{height:min(64vh,500px);min-width:100%;display:grid;grid-template-columns:minmax(280px,.9fr) minmax(0,1.1fr);background:var(--card);border:1px solid var(--line);box-shadow:0 45px 90px -32px rgba(33,24,14,.55);border-radius:8px;overflow:hidden}
-  .team-photo{min-height:0;background:var(--linen);position:relative;overflow:hidden}
-  .team-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 60%,rgba(245,240,232,.22))}
-  .team-photo img{width:100%;height:100%;object-fit:cover;object-position:center;filter:sepia(.05)}
-  .team-card.is-placeholder .team-photo{display:grid;place-items:center;background:var(--taupe)}
-  .team-card.is-placeholder .team-photo::before{content:"";width:110px;height:110px;background:url(assets/logo_monogram_cream.png) center/contain no-repeat;opacity:.85}
-  .team-copy{padding:clamp(30px,4vw,48px);display:flex;flex-direction:column;justify-content:center}
-  .team-copy h3{font-size:clamp(1.6rem,2.8vw,2.3rem);color:var(--taupe);margin-bottom:7px}
-  .team-role{font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:14px}
-  .team-copy p{font-size:.85rem;line-height:1.6;color:var(--ink-soft);max-width:46ch;margin-bottom:14px}
-  .team-meta{border-top:1px solid var(--line);padding-top:14px;margin-bottom:18px;color:var(--ink-soft);font-size:.76rem;letter-spacing:.04em}
-  .team-links{display:flex;flex-wrap:wrap;gap:12px}
-  .team-links .btn{font-size:.62rem;padding:11px 17px}
-  .team-dots{display:flex;justify-content:center;gap:9px;margin-top:28px}
-  .team-dot{width:8px;height:8px;padding:0;border:0;border-radius:50%;background:rgba(135,107,85,.35);cursor:pointer;transition:transform .2s ease,background .2s ease}
-  .team-dot.active{background:var(--taupe);transform:scale(1.35)}
-  .team-dot:focus-visible{outline:3px solid var(--taupe);outline-offset:3px}
-  @media(max-width:980px){
-    .team-viewport{margin:0 -20px;padding:0 20px}
-    .team-controls{top:50%;left:4px;right:4px;justify-content:space-between;transform:translateY(-50%)}
-    .team-card{height:min(78vh,760px);grid-template-columns:1fr;grid-template-rows:38% 62%}
-    .team-photo{height:auto;min-height:0;max-height:none}
-    .team-copy{padding:26px 26px 32px}
-    .team-copy h3{font-size:1.6rem}
-    .team-copy p{font-size:.86rem;line-height:1.6;margin-bottom:14px}
-  }
-  @media(prefers-reduced-motion:reduce){.team-track{transition:none}}
-
-  /* ============================================================
      ONDE ATENDO — card espresso sobre seção clara + mapa
      ============================================================ */
   .place{background:var(--linen);position:relative;z-index:0}
@@ -445,9 +427,10 @@
   .place-map{height:clamp(380px,42vw,500px);border-radius:6px;overflow:hidden;background:var(--linen)}
   .place-map iframe{width:100%;height:100%;border:0;filter:grayscale(.5) sepia(.16) contrast(.96)}
   @media(max-width:920px){
-    .place-grid{grid-template-columns:1fr}
-    .place-card{margin:-40px 0 0;position:relative}
-    .place-map{height:340px}
+    .place-grid{grid-template-columns:1fr;gap:0}
+    .place-card{margin:0;position:relative;border-radius:2.5rem .5rem}
+    .place-card::before{display:none}
+    .place-map{height:300px;border-radius:6px 6px 0 0}
   }
 
   /* ============================================================
@@ -455,7 +438,7 @@
      bordão com destaque e o @ logo abaixo do título
      ============================================================ */
   .contato{text-align:center;overflow:hidden}
-  .contato .mono{position:absolute;left:-90px;bottom:-110px;width:420px;opacity:.05;pointer-events:none}
+  .contato .mono{position:absolute;left:-90px;bottom:-110px;width:380px;opacity:.05;pointer-events:none}
   .contato h2{font-size:clamp(2.2rem,4.6vw,3.4rem);color:var(--taupe);margin-bottom:14px}
   .contato h2 em{font-style:italic;color:var(--espresso)}
   .contato p{color:var(--ink-soft);max-width:52ch;margin:28px auto 38px}
@@ -465,14 +448,17 @@
      FOOTER
      ============================================================ */
   footer{background:var(--espresso-deep);color:#D9C9B6;padding:84px 0 40px;border-top:1px solid rgba(255,255,255,.08)}
-  .foot{display:grid;grid-template-columns:1.2fr 1fr 1.3fr;gap:44px;margin-bottom:52px}
+  .foot{display:grid;grid-template-columns:repeat(3,auto);justify-content:center;align-items:start;gap:clamp(36px,5vw,88px);margin:0 auto 52px;text-align:center}
   .foot .foot-brand p{font-family:var(--serif);font-style:italic;font-size:1.15rem;color:#EFE3D4;margin-bottom:18px}
-  .foot img.flogo{height:37px;width:auto}
+  .foot img.flogo{height:37px;width:auto;margin:0 auto}
   .foot h4{font-family:var(--sans);font-weight:600;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-soft);margin-bottom:16px}
   .foot a,.foot p{display:block;font-size:.92rem;color:#C9B6A1;margin-bottom:9px;line-height:1.6}
   .foot a:hover{color:#fff}
   .foot-bottom{border-top:1px solid rgba(255,255,255,.12);padding-top:26px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:.76rem;color:#9A8874;letter-spacing:.06em}
-  @media(max-width:720px){.foot{grid-template-columns:1fr;gap:32px}}
+  .foot-bottom .dev{width:100%;text-align:center;margin-top:6px;letter-spacing:.08em}
+  .foot-bottom .dev a{color:#C9B6A1;text-decoration:none;transition:color .2s}
+  .foot-bottom .dev a:hover{color:#fff;text-decoration:underline}
+  @media(max-width:720px){.foot{grid-template-columns:1fr;gap:34px}}
 
   /* ============================================================
      WHATSAPP sticky
@@ -486,8 +472,54 @@
     transition:transform .25s ease,background .25s ease;
   }
   .wa:hover{transform:translateY(-2px);background:#1EBE5B}
+  body.modal-open .wa{opacity:0;pointer-events:none}
+  @media(max-width:640px){
+    .wa{right:16px;bottom:16px;width:52px;height:52px}
+    .wa svg{width:25px;height:25px}
+  }
   .wa:focus-visible{outline:3px solid rgba(37,211,102,.45);outline-offset:3px}
   .wa svg{width:28px;height:28px}
+
+  /* ============================================================
+     AJUSTES DE TELA PEQUENA
+     ============================================================ */
+  @media(max-width:640px){
+    body{font-size:16px}
+    section{padding:64px 0}
+    .wrap{padding:0 22px}
+    .section-head{margin-bottom:44px}
+
+    /* Marca d'água: no celular elas voltam, em versão compacta. */
+    .hero-monogram{width:200px;right:-18px;bottom:14px;opacity:.07;z-index:1}
+    .processo .mono{width:300px;right:-48px;top:auto;bottom:-30px;transform:none;opacity:.05}
+    .contato .mono{width:260px;left:-46px;bottom:-74px;opacity:.05}
+
+    /* CTAs em largura total: alvo de toque maior e alinhamento previsível. */
+    .hero-actions,.cta-actions,.place-card .acts{flex-direction:column;align-items:stretch;gap:12px}
+    .hero-actions .btn,.cta-actions .btn,.place-card .acts .btn,
+    .proc-card .btn,.processo-cta .btn{width:100%;justify-content:center}
+    .btn{padding:15px 20px;font-size:.78rem;letter-spacing:.12em}
+    .btn-outline{padding:14px 19px}
+    .place-card .acts .link{justify-content:center;margin-top:6px}
+
+    .hero-text{padding:clamp(52px,11vw,72px) 22px 34px}
+    .hero-text .eyebrow{margin-bottom:18px;font-size:.68rem}
+    .hero-text h1{font-size:clamp(2.2rem,9.2vw,2.8rem);line-height:1.14;margin-bottom:18px;max-width:11ch}
+    .hero-media{min-height:0}
+    .hero-text p{font-size:clamp(.97rem,3.9vw,1.02rem);line-height:1.72;margin-bottom:28px}
+    .hero-signature{margin-top:26px;font-size:.64rem;letter-spacing:.22em}
+
+    .proc{padding:56px 0}
+    .proc-card{padding:32px 24px}
+    .proc-badge{width:60px;height:60px;bottom:auto;top:16px}
+    .proc-badge img{width:32px;height:32px}
+    .proc.img-right .proc-badge{left:16px}
+    .proc.img-left .proc-badge{right:16px}
+
+    footer{padding:64px 0 32px}
+    .foot img.flogo{height:26px}
+    .foot-bottom{padding-bottom:52px}
+  }
 
   /* ============================================================
      Reveal + reduced motion
@@ -509,7 +541,7 @@
 <header id="hd">
   <div class="header-inner">
     <a class="brand" href="#topo" aria-label="Dra. Ana Lídia Meloncini — Cirurgia Plástica">
-      <img src="assets/logo_monogram_brown.png" width="1600" height="1551" alt="Ana Lídia Meloncini — Cirurgia Plástica" />
+      <img src="assets/logo_monogram_brown.webp" width="1600" height="1551" alt="Ana Lídia Meloncini — Cirurgia Plástica" />
     </a>
     <nav class="nav" id="mainNav" aria-label="Navegação principal">
       <a href="#sobre">Sobre</a>
@@ -541,9 +573,9 @@
       <div class="hero-signature reveal">Dra. Ana Lídia Meloncini · Cirurgiã Plástica</div>
     </div>
     <div class="hero-media">
-      <img id="heroImg" src="assets/ambiente-recepcao.jpg" alt="Recepção da clínica da Dra. Ana Lídia Meloncini" />
+      <img id="heroImg" src="assets/ambiente-recepcao.jpg" width="1402" height="910" fetchpriority="high" decoding="async" alt="Recepção da clínica da Dra. Ana Lídia Meloncini" />
     </div>
-    <img class="hero-monogram" src="assets/logo_monogram_brown.png" alt="" aria-hidden="true" />
+    <img class="hero-monogram" loading="lazy" decoding="async" src="assets/logo_monogram_brown.webp" alt="" aria-hidden="true" />
   </section>
 
   <!-- ================ FAIXA DE ASSINATURA =================== -->
@@ -605,8 +637,8 @@
       <div class="wrap">
         <div class="proc-grid">
           <div class="proc-media reveal d1">
-            <div class="frame"><img src="assets/mama.avif" alt="Imagem de referência para cirurgia mamária" /></div>
-            <span class="proc-badge"><img src="assets/ico_mama.png" alt="Ícone da categoria Mama" /></span>
+            <div class="frame"><img src="assets/mama.webp" loading="lazy" decoding="async" alt="Imagem de referência para cirurgia mamária" /></div>
+            <span class="proc-badge"><img src="assets/ico_mama.webp" loading="lazy" decoding="async" alt="Ícone da categoria Mama" /></span>
           </div>
           <div class="proc-card reveal">
             <div class="proc-kicker"><span class="num">01</span><span class="rule"></span><span class="cat">Mama</span></div>
@@ -637,8 +669,8 @@
       <div class="wrap">
         <div class="proc-grid">
           <div class="proc-media reveal d1">
-            <div class="frame"><img src="assets/corpo.png" alt="Imagem de referência para contorno corporal" /></div>
-            <span class="proc-badge"><img src="assets/ico_lipoescultura.png" alt="Ícone da categoria Lipoescultura" /></span>
+            <div class="frame"><img src="assets/corpo.webp" loading="lazy" decoding="async" alt="Imagem de referência para contorno corporal" /></div>
+            <span class="proc-badge"><img src="assets/ico_lipoescultura.webp" loading="lazy" decoding="async" alt="Ícone da categoria Lipoescultura" /></span>
           </div>
           <div class="proc-card reveal">
             <div class="proc-kicker"><span class="num">02</span><span class="rule"></span><span class="cat">Corpo</span></div>
@@ -665,9 +697,40 @@
     </section>
   </div>
 
+  <!-- ==================== TAMBÉM ATENDO ====================== -->
+  <section id="tambem-atendo" class="tambem">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Também atendo</span>
+        <h2>Outras áreas de atuação</h2>
+        <p>Para além de mama e contorno corporal, a dra. Ana Lídia também conduz estas frentes — com a mesma escuta, o mesmo rigor e o mesmo olhar de detalhe.</p>
+      </div>
+      <div class="also-cards reveal">
+        <button type="button" class="also-card" data-proc="face">
+          <span class="icon"><img src="assets/ico_face.webp" loading="lazy" decoding="async" alt="" /></span>
+          <h3>Face</h3>
+          <p>Rejuvenescimento e harmonização facial, com a leveza e a naturalidade como norte.</p>
+          <span class="more">Saiba mais <span aria-hidden="true">→</span></span>
+        </button>
+        <button type="button" class="also-card" data-proc="estetica">
+          <span class="icon"><img src="assets/ico_estetica.webp" loading="lazy" decoding="async" alt="" /></span>
+          <h3>Estética</h3>
+          <p>Tratamentos não cirúrgicos que acompanham e prolongam o resultado da cirurgia.</p>
+          <span class="more">Saiba mais <span aria-hidden="true">→</span></span>
+        </button>
+        <button type="button" class="also-card" data-proc="tecnologias">
+          <span class="icon"><img src="assets/ico_tecnologias.webp" loading="lazy" decoding="async" alt="" /></span>
+          <h3>Tecnologias</h3>
+          <p>Recursos e protocolos a favor da recuperação, do conforto e da qualidade do resultado.</p>
+          <span class="more">Saiba mais <span aria-hidden="true">→</span></span>
+        </button>
+      </div>
+    </div>
+  </section>
+
   <!-- ==================== COMO FUNCIONA ===================== -->
   <section id="processo" class="processo">
-    <img class="mono" src="assets/logo_monogram_brown.png" alt="" aria-hidden="true" />
+    <img class="mono" loading="lazy" decoding="async" src="assets/logo_monogram_brown.webp" alt="" aria-hidden="true" />
     <div class="wrap">
       <div class="section-head reveal">
         <span class="eyebrow">Como funciona</span>
@@ -702,96 +765,6 @@
     </div>
   </section>
 
-  <!-- ================== ESPECIALISTAS ======================== -->
-  <section id="especialistas" class="team">
-    <div class="wrap">
-      <div class="team-head reveal">
-        <span class="team-eyebrow">Nossos especialistas</span>
-        <p>O cuidado que revela começa em boas mãos.</p>
-      </div>
-      <div class="team-viewport reveal" aria-live="polite">
-        <div class="team-controls" aria-label="Controles do carrossel de especialistas">
-          <button class="team-control" id="teamPrev" type="button" aria-label="Especialista anterior">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m15 18-6-6 6-6" /></svg>
-          </button>
-          <button class="team-control" id="teamNext" type="button" aria-label="Próximo especialista">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>
-          </button>
-        </div>
-        <div class="team-track-window">
-          <div class="team-track" id="teamTrack">
-            <article class="team-card">
-              <div class="team-photo"><img src="assets/brand-folder.jpg" alt="Dra. Ana Lídia Meloncini — universo visual da clínica" /></div>
-              <div class="team-copy">
-                <span class="eyebrow">Cirurgia plástica</span>
-                <h3>Dra. Ana Lídia Meloncini</h3>
-                <p class="team-role">Cirurgiã plástica</p>
-                <p>Especialista em contorno corporal e cirurgia mamária, com atendimento direto e um plano claro em cada etapa — da avaliação à recuperação.</p>
-                <p class="team-meta">CRM 94.951 · RQE 93.868</p>
-                <div class="team-links">
-                  <a class="btn btn-primary" href="https://wa.me/5511945855039" target="_blank" rel="noopener">Agendar consulta</a>
-                  <a class="btn btn-outline" href="https://instagram.com/analidiameloncini" target="_blank" rel="noopener">Instagram</a>
-                </div>
-              </div>
-            </article>
-
-            <article class="team-card is-placeholder">
-              <div class="team-photo" aria-hidden="true"></div>
-              <div class="team-copy">
-                <span class="eyebrow">Em breve</span>
-                <h3>Mais uma especialista</h3>
-                <p class="team-role">Perfil em atualização</p>
-                <p>Em breve, você poderá conhecer outra profissional que faz parte da rede de cuidado da clínica.</p>
-              </div>
-            </article>
-
-            <article class="team-card is-placeholder">
-              <div class="team-photo" aria-hidden="true"></div>
-              <div class="team-copy">
-                <span class="eyebrow">Em breve</span>
-                <h3>Mais um especialista</h3>
-                <p class="team-role">Perfil em atualização</p>
-                <p>Estamos preparando este perfil para apresentar todos os profissionais que acompanham nossas pacientes.</p>
-              </div>
-            </article>
-          </div>
-        </div>
-      </div>
-      <div class="team-dots" id="teamDots" aria-label="Selecionar especialista"></div>
-    </div>
-  </section>
-
-  <!-- ==================== TAMBÉM ATENDO ====================== -->
-  <section id="tambem-atendo" class="tambem">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <span class="eyebrow">Também atendo</span>
-        <h2>Outras áreas de atuação</h2>
-        <p>Para além de mama e contorno corporal, a dra. Ana Lídia também conduz estas frentes — com a mesma escuta, o mesmo rigor e o mesmo olhar de detalhe.</p>
-      </div>
-      <div class="also-cards reveal">
-        <button type="button" class="also-card" data-proc="face">
-          <span class="icon"><img src="assets/ico_face.png" alt="" /></span>
-          <h3>Face</h3>
-          <p>Rejuvenescimento e harmonização facial, com a leveza e a naturalidade como norte.</p>
-          <span class="more">Saiba mais <span aria-hidden="true">→</span></span>
-        </button>
-        <button type="button" class="also-card" data-proc="estetica">
-          <span class="icon"><img src="assets/ico_estetica.png" alt="" /></span>
-          <h3>Estética</h3>
-          <p>Tratamentos não cirúrgicos que acompanham e prolongam o resultado da cirurgia.</p>
-          <span class="more">Saiba mais <span aria-hidden="true">→</span></span>
-        </button>
-        <button type="button" class="also-card" data-proc="tecnologias">
-          <span class="icon"><img src="assets/ico_tecnologias.png" alt="" /></span>
-          <h3>Tecnologias</h3>
-          <p>Recursos e protocolos a favor da recuperação, do conforto e da qualidade do resultado.</p>
-          <span class="more">Saiba mais <span aria-hidden="true">→</span></span>
-        </button>
-      </div>
-    </div>
-  </section>
-
   <!-- ===================== ONDE ATENDO ====================== -->
   <section id="localizacao" class="place">
     <div class="wrap">
@@ -818,7 +791,7 @@
 
   <!-- ======================= CONTATO ======================== -->
   <section id="contato" class="contato">
-    <img class="mono" src="assets/logo_monogram_brown.png" alt="" aria-hidden="true" />
+    <img class="mono" loading="lazy" decoding="async" src="assets/logo_monogram_brown.webp" alt="" aria-hidden="true" />
     <div class="wrap">
       <div class="reveal">
         <span class="eyebrow">Vamos conversar?</span>
@@ -838,10 +811,6 @@
 <footer>
   <div class="wrap">
     <div class="foot">
-      <div class="foot-brand">
-        <p>Beleza, naturalidade e harmonia.</p>
-        <img class="flogo" src="assets/logo_wordmark_cream.png" alt="Ana Lídia Meloncini — Cirurgia Plástica" />
-      </div>
       <div>
         <h4>Contato</h4>
         <a href="https://wa.me/5511945855039" target="_blank" rel="noopener">WhatsApp (11) 94585-5039</a>
@@ -851,10 +820,15 @@
         <h4>Endereço</h4>
         <p>Rua Guarará, 529 — Conj. 61<br>Jardim Paulista, São Paulo — SP</p>
       </div>
+      <div class="foot-brand">
+        <p>Beleza, naturalidade e harmonia.</p>
+        <img class="flogo" src="assets/logo_wordmark_cream.webp" loading="lazy" decoding="async" alt="Ana Lídia Meloncini — Cirurgia Plástica" />
+      </div>
     </div>
     <div class="foot-bottom">
       <span>© <span id="yr"></span> Dra. Ana Lídia Meloncini · Cirurgia Plástica</span>
       <span>Responsável técnica: Dra. Ana Lídia Meloncini — CRM 94.951 · RQE 93868</span>
+      <span class="dev">Desenvolvido por <a href="https://valkhan.com.br/?utm_source=analidia.med.br" target="_blank" rel="noopener">Valkhan Tech</a></span>
     </div>
   </div>
 </footer>
@@ -868,7 +842,7 @@
   <div class="modal-overlay" data-close></div>
   <div class="modal-card">
     <button type="button" class="modal-close" data-close aria-label="Fechar janela">×</button>
-    <span class="modal-icon"><img id="procModalIcon" src="assets/ico_face.png" alt="" /></span>
+    <span class="modal-icon"><img id="procModalIcon" src="assets/ico_face.webp" loading="lazy" decoding="async" alt="" /></span>
     <span class="eyebrow">Também atendo</span>
     <h3 id="procModalTitle"></h3>
     <p class="modal-body" id="procModalBody"></p>
@@ -913,42 +887,14 @@
   }
 
   // Reveal
-  var io = new IntersectionObserver(function(es){
-    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
-  },{threshold:.12});
-  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
-
-  // Carrossel de especialistas
-  var teamTrack = document.getElementById('teamTrack');
-  var teamDots = document.getElementById('teamDots');
-  var teamPrev = document.getElementById('teamPrev');
-  var teamNext = document.getElementById('teamNext');
-  var teamIndex = 0;
-  var teamCount = teamTrack ? teamTrack.children.length : 0;
-  if(teamTrack && teamDots){
-    for(var dotIndex = 0; dotIndex < teamCount; dotIndex++){
-      var dot = document.createElement('button');
-      dot.className = 'team-dot';
-      dot.type = 'button';
-      dot.setAttribute('aria-label', 'Ver especialista ' + (dotIndex + 1));
-      dot.addEventListener('click', function(){ teamGoTo(Number(this.dataset.index)); });
-      dot.dataset.index = dotIndex;
-      teamDots.appendChild(dot);
-    }
-    function teamGoTo(index){
-      teamIndex = Math.max(0, Math.min(index, teamCount - 1));
-      var slideWidth = teamTrack.parentElement.getBoundingClientRect().width;
-      teamTrack.style.transform = 'translateX(-' + (teamIndex * slideWidth) + 'px)';
-      Array.prototype.forEach.call(teamDots.children, function(dot, dotPosition){
-        dot.classList.toggle('active', dotPosition === teamIndex);
-        dot.setAttribute('aria-current', dotPosition === teamIndex ? 'true' : 'false');
-      });
-      if(teamPrev) teamPrev.disabled = teamIndex === 0;
-      if(teamNext) teamNext.disabled = teamIndex === teamCount - 1;
-    }
-    teamPrev.addEventListener('click', function(){ teamGoTo(teamIndex - 1); });
-    teamNext.addEventListener('click', function(){ teamGoTo(teamIndex + 1); });
-    teamGoTo(0);
+  var reveals = document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+    },{threshold:.12});
+    reveals.forEach(function(el){ io.observe(el); });
+  }else{
+    reveals.forEach(function(el){ el.classList.add('in'); });
   }
 
   // Parallax suave — hero + fotos dos procedimentos
@@ -968,25 +914,69 @@
       });
     }, {passive:true});
   }
+
+  // Mobile — os cards de Mama e Corpo sobem sobre a foto conforme o scroll
+  // (a faixa "A beleza que respeita sua essência" usa o mesmo efeito, ≤900px;
+  //  o card de "Onde atendo" sobe sobre o mapa, ≤920px)
+  (function(){
+    if(reduce) return;
+    var mq980 = window.matchMedia('(max-width:980px)');
+    var mq900 = window.matchMedia('(max-width:900px)');
+    var mq920 = window.matchMedia('(max-width:920px)');
+    var pairs = [];
+    function gather(){
+      pairs = [];
+      document.querySelectorAll('.proc .proc-card').forEach(function(card){
+        var grid = card.closest('.proc-grid');
+        if(grid){ pairs.push({card:card, media:grid.querySelector('.proc-media'), mq:mq980}); }
+      });
+      var sig = document.querySelector('.signature');
+      var hm = document.querySelector('.hero-media');
+      if(sig && hm) pairs.push({card:sig, media:hm, mq:mq900});
+      var place = document.querySelector('.place-card');
+      var pm = document.querySelector('.place-map');
+      if(place && pm) pairs.push({card:place, media:pm, mq:mq920});
+    }
+    gather();
+    var ticking = false;
+    function lift(){
+      ticking = false;
+      var vh = window.innerHeight;
+      pairs.forEach(function(o){
+        var m = o.media, c = o.card;
+        if(!m || !o.mq.matches){ if(c.style.translate) c.style.translate=''; return; }
+        var r = m.getBoundingClientRect();
+        // Sem reset quando a mídia sai da tela: o clamp abaixo congela o translate em −85px
+        // (p=1) em vez de zerar, evitando o "salto" do card ao continuar rolando.
+        var p = (vh - r.top) / (vh + r.height);       // 0 (foto entrando) → 1 (foto saindo)
+        p = p < 0 ? 0 : p > 1 ? 1 : p;
+        c.style.translate = '0 ' + ((-30 - p * 55).toFixed(1)) + 'px';  // −30px → −85px
+      });
+    }
+    window.addEventListener('scroll', function(){ if(!ticking){ ticking = true; requestAnimationFrame(lift); } }, {passive:true});
+    window.addEventListener('resize', function(){ gather(); lift(); });
+    lift();
+  })();
+
 // Modais "Saiba mais" — cards Também atendo
   var procData = {
     face:{
       title:'Face',
-      icon:'assets/ico_face.png',
+      icon:'assets/ico_face.webp',
       body:'Harmonização e rejuvenescimento facial com um olhar de naturalidade: cada conduta é planejada para valorizar os seus traços — nunca para descaracterizá-los.',
       list:['Blefaroplastia e lifting facial','Harmonização com preenchedores e toxina botulínica','Enxerto de gordura facial','Rinomodelação'],
       wa:'https://wa.me/5511945855039?text=Tenho%20interesse%20em%20procedimentos%20de%20face'
     },
     estetica:{
       title:'Estética',
-      icon:'assets/ico_estetica.png',
+      icon:'assets/ico_estetica.webp',
       body:'Tratamentos não cirúrgicos que acompanham e prolongam o resultado da cirurgia, com protocolos personalizados e foco no conforto e no bem-estar.',
       list:['Bioestimuladores de colágeno','Peeling e cuidados com a pele','Protocolos de recuperação pós-operatória','Avaliação estética personalizada'],
       wa:'https://wa.me/5511945855039?text=Tenho%20interesse%20em%20est%C3%A9tica'
     },
     tecnologias:{
       title:'Tecnologias',
-      icon:'assets/ico_tecnologias.png',
+      icon:'assets/ico_tecnologias.webp',
       body:'Tecnologia a serviço da segurança e do conforto: recursos e protocolos modernos no planejamento, na execução e na recuperação de cada procedimento.',
       list:['Lipoaspiração assistida por laser ou ultrassom','Sistemas de recuperação acelerada','Planejamento com recursos de imagem','Equipamentos de última geração'],
       wa:'https://wa.me/5511945855039?text=Quero%20saber%20sobre%20as%20tecnologias%20utilizadas'
@@ -1035,6 +1025,17 @@
     });
   });
   procModal.querySelectorAll('[data-close]').forEach(function(el){
+    el.addEventListener('click', closeModal);
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && procModal.classList.contains('open')) closeModal();
+  });
+</script>
+
+</body>
+</html>
+
+on(el){
     el.addEventListener('click', closeModal);
   });
   document.addEventListener('keydown', function(e){
