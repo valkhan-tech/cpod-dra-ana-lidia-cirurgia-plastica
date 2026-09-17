@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="color-scheme" content="only light" />
 <title>Dra. Ana Lídia Meloncini — Cirurgia Plástica em São Paulo</title>
-<meta name="description" content="Cirurgia plástica em São Paulo com a Dra. Ana Lídia Meloncini (CRM 94.951 · RQE 93.868). Cirurgia mamária, lipoescultura e abdominoplastia com foco em naturalidade. Consultório no Jardim Paulista — agende pelo WhatsApp." />
+<meta name="description" content="Cirurgia plástica em São Paulo com a Dra. Ana Lídia Meloncini (CRM 94.951 · RQE 93.868). Cirurgia mamária, lipoescultura e abdominoplastia com foco em naturalidade. Consultório no Jardim Paulista também recebe a cardiologista Dra. Priscila Nasser — agende pelo WhatsApp." />
 <meta name="robots" content="index, follow" />
 <meta name="author" content="Dra. Ana Lídia Meloncini" />
 <meta name="language" content="pt-BR" />
@@ -14,6 +14,7 @@
 <meta name="geo.position" content="-23.5663;-46.6663" />
 <meta name="ICBM" content="-23.5663, -46.6663" />
 <link rel="canonical" href="https://analidia.med.br/" />
+<link rel="llms-txt" href="/llms.txt" />
 
 <!-- Favicons -->
 <link rel="icon" href="/assets/favicon.ico" sizes="any" />
@@ -59,7 +60,7 @@
     { "@type": "PropertyValue", "name": "CRM", "value": "94.951" },
     { "@type": "PropertyValue", "name": "RQE", "value": "93.868" }
   ],
-  "description": "Cirurgiã plástica em São Paulo com foco em naturalidade. Cirurgia mamária, lipoescultura e abdominoplastia.",
+  "description": "Cirurgiã plástica em São Paulo com foco em naturalidade. Cirurgia mamária, lipoescultura e abdominoplastia. Consultório também recebe a cardiologista Dra. Priscila Nasser.",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "Rua Guarará, 529 — Conjunto 61",
@@ -86,6 +87,24 @@
     { "@type": "MedicalProcedure", "name": "Lipoescultura" },
     { "@type": "MedicalProcedure", "name": "Abdominoplastia" },
     { "@type": "MedicalProcedure", "name": "Harmonização facial" }
+  ],
+  "employee": [
+    {
+      "@type": "Physician",
+      "name": "Dra. Priscila Nasser",
+      "medicalSpecialty": "Cardiovascular",
+      "url": "https://priscilanasser.com.br/",
+      "identifier": [
+        { "@type": "PropertyValue", "name": "CRM", "value": "125.996-SP" },
+        { "@type": "PropertyValue", "name": "RQE", "value": "99.010" }
+      ],
+      "description": "Cardiologista com atendimento humanizado e baseado em evidências científicas, coordenadora da Cardiologia do Hospital de Transplantes Euryclides de Jesus Zerbini e cardiologista do Hospital Alemão Oswaldo Cruz.",
+      "telephone": "+5511945855039",
+      "sameAs": [
+        "https://instagram.com/dra_priscila_nasser",
+        "https://priscilanasser.com.br/"
+      ]
+    }
   ]
 }
 </script>
@@ -430,6 +449,35 @@
   @media(max-width:860px){
     .also-cards{grid-template-columns:1fr}
     .tambem::after{display:none}
+  }
+
+  /* ============================================================
+     ESPECIALISTAS — profissional parceira em destaque
+     ============================================================ */
+  .team{overflow:hidden;background:var(--linen)}
+  .team-head{margin-bottom:clamp(28px,4vw,44px)}
+  .team-eyebrow{display:inline-flex;align-items:center;gap:14px;font-size:.7rem;letter-spacing:.26em;text-transform:uppercase;color:var(--taupe)}
+  .team-eyebrow::before{content:"";width:36px;height:1px;background:var(--gold);flex:none}
+  .team-viewport{position:relative}
+  .team-track-window{overflow:hidden}
+  .team-track{display:flex}
+  .team-card{height:min(64vh,500px);min-width:100%;display:grid;grid-template-columns:minmax(280px,.9fr) minmax(0,1.1fr);background:var(--card);border:1px solid var(--line);box-shadow:0 45px 90px -32px rgba(33,24,14,.55);border-radius:8px;overflow:hidden}
+  .team-photo{min-height:0;background:var(--linen);position:relative;overflow:hidden}
+  .team-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 60%,rgba(245,240,232,.22))}
+  .team-photo img{width:100%;height:100%;object-fit:cover;object-position:center;filter:sepia(.05)}
+  .team-copy{padding:clamp(30px,4vw,48px);display:flex;flex-direction:column;justify-content:center}
+  .team-copy h3{font-size:clamp(1.6rem,2.8vw,2.3rem);color:var(--taupe);margin-bottom:7px}
+  .team-role{font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:14px}
+  .team-copy p{font-size:.85rem;line-height:1.6;color:var(--ink-soft);max-width:46ch;margin-bottom:14px}
+  .team-meta{border-top:1px solid var(--line);padding-top:14px;margin-bottom:18px;color:var(--ink-soft);font-size:.76rem;letter-spacing:.04em}
+  .team-links{display:flex;flex-wrap:wrap;gap:12px}
+  .team-links .btn{font-size:.62rem;padding:11px 17px}
+  @media(max-width:980px){
+    .team-card{height:min(78vh,760px);grid-template-columns:1fr;grid-template-rows:38% 62%}
+    .team-photo{height:auto;min-height:0;max-height:none}
+    .team-copy{padding:26px 26px 32px}
+    .team-copy h3{font-size:1.6rem}
+    .team-copy p{font-size:.86rem;line-height:1.6;margin-bottom:14px}
   }
 
   /* ============================================================
@@ -878,6 +926,36 @@
         <div class="cta-actions">
           <a class="btn btn-primary" href="https://wa.me/5511945855039" target="_blank" rel="noopener">Agendar pelo WhatsApp</a>
           <a class="btn btn-outline" href="https://instagram.com/analidiameloncini" target="_blank" rel="noopener">Seguir analidiameloncini</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+   <!-- ================== ESPECIALISTAS ======================== -->
+  <section id="especialistas" class="team">
+    <div class="wrap">
+      <div class="team-head reveal">
+        <span class="team-eyebrow">Nossos especialistas</span>
+      </div>
+      <div class="team-viewport reveal" aria-live="polite">
+        <div class="team-track-window">
+          <div class="team-track" id="teamTrack">
+            <article class="team-card">
+              <div class="team-photo"><img src="assets/priscila-nasser.jpg" loading="lazy" decoding="async" alt="Dra. Priscila Nasser — Cardiologista" /></div>
+              <div class="team-copy">
+                <span class="eyebrow">Cardiologia</span>
+                <h3>Dra. Priscila Nasser</h3>
+                <p class="team-role">Cardiologista</p>
+                <p>Consultas com tempo para ouvir, explicações sem pressa e acompanhamento próximo — cuidado humanizado e baseado em evidências científicas. Coordenadora da Cardiologia do Hospital de Transplantes Euryclides de Jesus Zerbini e cardiologista do Hospital Alemão Oswaldo Cruz.</p>
+                <p class="team-meta">CRM 125.996-SP · RQE 99.010</p>
+                <div class="team-links">
+                  <a class="btn btn-primary" href="https://wa.me/5511945855039" target="_blank" rel="noopener">Agendar consulta</a>
+                  <a class="btn btn-outline" href="https://instagram.com/dra_priscila_nasser?utm_source=analidia.med.br" target="_blank" rel="noopener">Instagram</a>
+                  <a class="btn btn-outline" href="https://priscilanasser.com.br/?utm_source=analidia.med.br" target="_blank" rel="noopener">Website</a>
+                </div>
+              </div>
+            </article>
+          </div>
         </div>
       </div>
     </div>
